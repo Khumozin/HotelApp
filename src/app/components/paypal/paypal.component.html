@@ -1,0 +1,15 @@
+<ng-container *ngIf="!paidFor">
+    <h1>Executive Rooms - R{{ product.price }}</h1>
+
+    <p>{{ product.description }}</p>
+
+    <img width="400"
+         [src]="product.img">
+
+</ng-container>
+
+<ng-container *ngIf="paidFor">
+    <h1>Payment Was Successful!</h1>
+</ng-container>
+
+<div #paypal></div>

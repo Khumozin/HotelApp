@@ -8,12 +8,14 @@ import { GallleryCardComponent } from './components/galllery-card/galllery-card.
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { RoomCarouselComponent } from './components/room-carousel/room-carousel.component';
 import { RoomInfoComponent } from './components/room-info/room-info.component';
-import { RoomComponent } from './components/room/room.component';
 import { BookingComponent } from './pages/booking/booking.component';
+import { ConfirmationComponent } from './pages/confirmation/confirmation.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PaymentComponent } from './pages/payment/payment.component';
+import { RoomComponent } from './pages/room/room.component';
 import { EnumToArrayPipe } from './shared/pipes/enum-to-array.pipe';
 import { AppRoutingModule } from './shared/routing/app-routing.module';
+import { PaypalComponent } from './components/paypal/paypal.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AppRoutingModule } from './shared/routing/app-routing.module';
     FeatureListComponent,
     BookingComponent,
     PaymentComponent,
-    EnumToArrayPipe
+    EnumToArrayPipe,
+    ConfirmationComponent,
+    PaypalComponent
   ],
   imports: [
     BrowserModule,
