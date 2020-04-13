@@ -35,8 +35,8 @@ export class BookingComponent implements OnInit, AfterViewInit {
     M.FormSelect.init(elems, {});
   }
 
-  onCheckout() {
-    this.router.navigate(['/payment']);
+  onConfirm() {
+    this.router.navigate(['/confirmation']);
   }
 
 }
