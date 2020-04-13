@@ -16,12 +16,12 @@ export class PaymentComponent implements OnInit {
   }
 
   onPaypalPayment() {
-    // M.toast({ html: 'Payment was successful!', classes: 'rounded light-green accent-3' });
-    this.router.navigate(['/paypal']);
+    M.toast({ html: 'Coming Soon!', classes: 'rounded light-green accent-3' });
+    // this.router.navigate(['/paypal']);
   }
 
   onStripePayment() {
-    // M.toast({ html: 'Payment was successful!', classes: 'rounded light-green accent-3' });
+    M.toast({ html: 'Coming Soon!', classes: 'rounded light-green accent-3' });
   }
 
 }
