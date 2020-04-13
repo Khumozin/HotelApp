@@ -1,4 +1,5 @@
 import { Rooms } from '../enums/rooms.enum';
+import { Room } from '../models/room.model';
 
 export const amenities = [
     {
@@ -90,16 +91,16 @@ export const features = [
     { text: 'Digital Safe' },
 ];
 
-export const room = [
+export const room: Room[] = [
     {
-        title: 'Executive Rooms',
-        price: 'R890/night',
-        roomType: Rooms.Executive,
-        description: `This elegantly furnished air-conditioned en-suite room opens out onto a large (shared) terrace with
+        Title: 'Executive Rooms',
+        Price: 'R890/night',
+        RoomType: Rooms.Executive,
+        Description: `This elegantly furnished air-conditioned en-suite room opens out onto a large (shared) terrace with
             river views. It sleeps two on a king sized bed. The
             spacious room includes a large lounge area with flat screen TV (DSTV) and small kitchenette. The
             luxurious bathroom has both walk-in shower and bathtub. Limited parking & unlimited WIFI.`,
-        images: [
+        Images: [
             {
                 path: '../assets/img/Executive/DSC1567.jpg'
             },
@@ -118,6 +119,283 @@ export const room = [
             {
                 path: '../assets/img/Executive/Executive-Room-overview.jpg'
             },
+        ],
+        FeaturesList: [
+            { Text: '40 sqm living space' },
+            { Text: 'Coffee and Tea facilities' },
+            { Text: 'Complimentary WiFi' },
+            { Text: 'Flat TV' },
+            { Text: 'Premium Satellite Channels' },
+            { Text: 'Air condition for cold and heat' },
+            { Text: 'Microwave' },
+            { Text: '4 sets plates, water drinking glasses, wine glasses and mugs' },
+            { Text: 'King Bed or twin beds' },
+            { Text: 'Full bath: shower, bidet, bath, toilet and basin' },
+            { Text: 'Iron' },
+            { Text: 'Iron board' },
+            { Text: 'Single Door Fridge' },
+            { Text: 'Filter Coffee' },
+            { Text: 'Writing Desk' },
+            { Text: 'Private covered patio with a coffee table and 2 chairs' },
+            { Text: 'Garden View' },
+            { Text: 'Kitchenette' },
+            { Text: 'Sofa with coffee table' },
+            { Text: 'Digital Safe' },
         ]
-    }
+    },
+    {
+        Title: 'Penthouse',
+        Price: 'R830/night',
+        RoomType: Rooms.Penthouse,
+        Description: `This elegantly furnished air-conditioned en-suite 
+        room opens out onto a large private terrace with river views. It sleeps 
+        two on a king sized bed. The room includes a small lounge area with flat screen TV (DSTV) 
+            and small kitchenette. An extra single bed could be added 
+            on request for an additional fee. Limited parking & unlimited WIFI.`,
+        Images: [
+            {
+                path: '../assets/img/Penthouse/Balcony-from-Penthouse-1191x776.jpg'
+            },
+            {
+                path: '../assets/img/Penthouse/Bathroom-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Penthouse/Bedroom-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Penthouse/BedroomKitchen-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Penthouse/Kitchen-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Penthouse/Patio-1-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Penthouse/Patio-2-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Penthouse/River-View-from-Penthouse-1191x772.jpg'
+            },
+        ],
+        FeaturesList: [
+            { Text: '25 sqm living space' },
+            { Text: 'Coffee and Tea facilities' },
+            { Text: 'Complimentary WiFi' },
+            { Text: 'Flat TV' },
+            { Text: 'Premium Satellite Channels' },
+            { Text: 'Air condition for cold and heat' },
+            { Text: 'Microwave' },
+            { Text: '4 sets plates, water drinking glasses, wine glasses and mugs' },
+            { Text: 'Double Bed' },
+            { Text: 'Shower and Toilet and basin' },
+            { Text: 'Iron' },
+            { Text: 'Iron board' },
+            { Text: 'Single Door Fridge' },
+            { Text: 'Filter Coffee' },
+            { Text: 'Writing Desk' },
+            { Text: 'Private covered patio with a coffee table and 2 chairs' },
+            { Text: 'Garden View' },
+            { Text: 'Kitchenette' },
+            { Text: 'Sofa with coffee table' },
+            { Text: 'Digital Safe' },
+        ]
+    },
+    {
+        Title: 'Luxury Rooms',
+        Price: 'R684/night',
+        RoomType: Rooms.Luxury,
+        Description: `This elegantly furnished air-conditioned en-suite room opens 
+        out onto a large (shared) terrace with river views.  
+        It sleeps two on a king sized bed. The room includes a lounge area 
+        with flat screen TV (DSTV) and small kitchenette. An extra single 
+        bed could be added on request for an additional fee. 
+        Limited parking & unlimited WIFI.`,
+        Images: [
+            {
+                path: '../assets/img/Luxury/DSC1522.jpg'
+            },
+            {
+                path: '../assets/img/Luxury/DSC1523.jpg'
+            },
+            {
+                path: '../assets/img/Luxury/DSC1538.jpg'
+            },
+            {
+                path: '../assets/img/Luxury/DSC1565.jpg'
+            },
+            {
+                path: '../assets/img/Luxury/Luxury-Room.jpg'
+            },
+        ],
+        FeaturesList: [
+            { Text: '25 sqm living space' },
+            { Text: 'Coffee and Tea facilities' },
+            { Text: 'Complimentary WiFi' },
+            { Text: 'Flat TV' },
+            { Text: 'Premium Satellite Channels' },
+            { Text: 'Air condition for cold and heat' },
+            { Text: 'Microwave' },
+            { Text: 'Heating panel' },
+            { Text: '4 sets plates, water drinking glasses, wine glasses and mugs' },
+            { Text: 'Double Bed' },
+            { Text: 'Iron' },
+            { Text: 'Iron Board' },
+            { Text: 'Single Door Fridge' },
+            { Text: 'Filter Coffee' },
+            { Text: 'Long writing table' },
+            { Text: 'Private covered patio with a coffee table and 2 chairs' },
+            { Text: 'Garden View' },
+            { Text: 'Kitchennete' },
+            { Text: 'Sofa with coffee table' },
+            { Text: 'Digital Safe' },
+
+        ]
+    },
+    {
+        Title: 'Economy Rooms',
+        Price: 'R618/night',
+        RoomType: Rooms.Economy,
+        Description: `This air-conditioned en-suite room 
+        opens out onto a large (shared) terrace with river views.
+         It sleeps two on a double bed.  The room includes 
+         unlimited WIFI, a writing desk & chair, flat
+         screen TV (DSTV) and small kitchenette. Limited parking available`,
+        Images: [
+            {
+                path: '../assets/img/Economy/Balcony-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Economy/DSC1384-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Economy/DSC1387-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Economy/DSC1391-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Economy/DSC1394-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Economy/Economy-Room-1191x795.jpg'
+            },
+            ,
+            {
+                path: '../assets/img/Economy/Entire-Room-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Economy/Kitchen-Desk-1191x795.jpg'
+            },
+        ],
+        FeaturesList: [
+            { Text: '21 sqm living space' },
+            { Text: 'Coffee and Tea facilities' },
+            { Text: 'Complimentary WiFi' },
+            { Text: 'Flat TV' },
+            { Text: 'Premium Satellite Channels' },
+            { Text: 'Air condition for cold and heat' },
+            { Text: 'Microwave' },
+            { Text: 'Heating panel' },
+            { Text: '4 sets plates, water drinking glasses, wine glasses and mugs' },
+            { Text: 'Double Bed' },
+            { Text: 'Shower and Toilet and basin' },
+            { Text: 'Iron' },
+            { Text: 'Iron Board' },
+            { Text: 'Bar Fridge' },
+            { Text: 'Writing Dessk' },
+            { Text: 'Private covered patio with a coffee table and 2 chairs' },
+            { Text: 'Garden View' },
+            { Text: 'Kitchennete' },
+            { Text: 'Digital Safe' },
+
+        ]
+    },
+    {
+        Title: 'Standard Rooms',
+        Price: 'R567/night',
+        RoomType: Rooms.Standard,
+        Description: `This air-conditioned en-suite room sleeps two on a double bed.  The room includes unlimited WIFI, a writing desk & chair, flat screen TV (openview channels only) and small kitchenette.  Limited parking available.`,
+        Images: [
+            {
+                path: '../assets/img/Standard/Bathroom-1-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Standard/Bedroom-1-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Standard/Kitchen-1-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Standard/Kitchen-Fridge-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Standard/Standard-Room-2-1191x795.jpg'
+            },
+            {
+                path: '../assets/img/Standard/Standard-Room-1191x795.jpg'
+            },
+        ],
+        FeaturesList: [
+            { Text: '21 sqm living space' },
+            { Text: 'Coffee and Tea facilities' },
+            { Text: 'Complimentary WiFi' },
+            { Text: 'Flat TV' },
+            { Text: 'Local 21 TV channels' },
+            { Text: 'Air condition for cold and heat' },
+            { Text: 'Microwave' },
+            { Text: 'Heating panel' },
+            { Text: '4 sets plates, water drinking glasses, wine glasses and mugs' },
+            { Text: 'Double Bed' },
+            { Text: 'Shower and Toilet and basin' },
+            { Text: 'Iron' },
+            { Text: 'Iron board' },
+            { Text: 'Single Door Fridge' },
+            { Text: 'Kitchenette' },
+            { Text: 'Digital Safe' },
+        ]
+    },
+    {
+        Title: 'Bachelor Rooms',
+        Price: 'R513/night',
+        RoomType: Rooms.Bachelor,
+        Description: `This air-conditioned en-suite room sleeps 
+        two on a double bed.  The room includes unlimited WIFI, 
+        a flap-down writing desk, flat screen TV (openview channels only) 
+        and small kitchenette (no sink). Limited parking available.`,
+        Images: [
+            {
+                path: '../assets/img/Bachelor/DSC1445.jpg'
+            },
+            {
+                path: '../assets/img/Bachelor/DSC1447-992x795.jpg'
+            },
+            {
+                path: '../assets/img/Bachelor/DSC1450-992x795.jpg'
+            },
+            {
+                path: '../assets/img/Bachelor/DSC1455-992x795.jpg'
+            },
+        ],
+        FeaturesList: [
+            { Text: '15 sqm living space' },
+            { Text: 'Coffee and Tea facilities' },
+            { Text: 'Complimentary WiFi' },
+            { Text: 'Flat TV' },
+            { Text: 'Local 21 TV channels' },
+            { Text: 'Air condition for cold and heat' },
+            { Text: 'Microwave' },
+            { Text: 'Heating panel' },
+            { Text: '4 sets plates, water drinking glasses, wine glasses and mugs' },
+            { Text: 'Double Bed' },
+            { Text: 'Full bath: shower, bidet, bath, toilet and basin' },
+            { Text: 'Iron' },
+            { Text: 'Iron board' },
+            { Text: 'Bar Fridge' },
+            { Text: 'Frying pan' },
+            { Text: 'Cooking pots' },
+            { Text: 'Kitchenette' },
+            { Text: 'Digital Safe' },
+        ]
+    },
 ];
