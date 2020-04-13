@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Rooms } from '../../shared/enums/rooms.enum';
 
@@ -14,7 +15,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
   RoomTypes = Rooms;
   roomNummbers = [...Array(10).keys()];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -32,6 +33,10 @@ export class BookingComponent implements OnInit, AfterViewInit {
   initSelect() {
     const elems = document.querySelectorAll('select');
     M.FormSelect.init(elems, {});
+  }
+
+  onCheckout() {
+    this.router.navigate(['/payment']);
   }
 
 }
