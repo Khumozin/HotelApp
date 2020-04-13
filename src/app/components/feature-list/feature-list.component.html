@@ -1,0 +1,14 @@
+<ul class="collapsible">
+    <li>
+        <div class="collapsible-header"
+             (click)="onToggle()">
+            <i class="material-icons">
+                {{collapsibleIcon}}
+            </i>Features</div>
+        <div class="collapsible-body">
+            <ng-container *ngFor="let item of features; let i = index;">
+                <p>{{ i+1 }}. {{ item.text }}</p>
+            </ng-container>
+        </div>
+    </li>
+</ul>

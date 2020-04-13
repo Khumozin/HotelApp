@@ -1,0 +1,46 @@
+<!-- Navbar -->
+<div class="navbar-fixed">
+    <nav class="white">
+        <!-- teal -->
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="#home"
+                   class="brand-logo black-text">AppName</a>
+                <a href="#"
+                   data-target="mobile-nav"
+                   class="sidenav-trigger">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#amenities">Amenities</a>
+                    </li>
+                    <li>
+                        <a href="#rooms">Rooms</a>
+                    </li>
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<ul class="sidenav"
+    id="mobile-nav">
+    <li (click)="closeSidenav()">
+        <a href="#">Home</a>
+    </li>
+    <li>
+        <a href="#amenities">Amenities</a>
+    </li>
+    <li>
+        <a href="#rooms">Rooms</a>
+    </li>
+    <li>
+        <a href="#contact">Contact</a>
+    </li>
+</ul>

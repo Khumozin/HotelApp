@@ -1,0 +1,19 @@
+<div class="container">
+    <h3 class="center-align">Dynasty Forest Sandown Hotel Rooms</h3>
+    <div class="row"
+         style="margin-top: 5%;">
+        <div class="col s12 m12 l6">
+            <app-room-carousel [images]="room.images"></app-room-carousel>
+        </div>
+        <div class="col s12 m12 l6">
+            <app-room-info [title]="room.title"
+                           [price]="room.price"
+                           [description]="room.description"></app-room-info>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m12 l12">
+            <app-feature-list [features]="featureList"></app-feature-list>
+        </div>
+    </div>
+</div>

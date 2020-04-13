@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    overflow-x: hidden;
+}
+
+@media (max-width: 620px) {
+    .name {
+        text-align: center;
+    }
+
+    .about-us {
+        text-align: center;
+    }
+}
