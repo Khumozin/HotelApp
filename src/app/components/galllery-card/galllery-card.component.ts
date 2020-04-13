@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Rooms } from '../../shared/enums/rooms.enum';
 
@@ -15,7 +16,7 @@ export class GallleryCardComponent implements OnInit {
 
   @Input() roomType: Rooms;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
