@@ -35,7 +35,7 @@
                                class="datepicker"
                                formControlName="ArrivalDate">
                         <label for="arrivalDate"
-                               [ngClass]="{'active': (currentBooking && currentBooking.ArrivalDate)}">Arrival
+                               [ngClass]="{'active': (currentBooking && currentBooking.ArrivalDate) || bookingForm.controls.ArrivalDate}">Arrival
                             Date</label>
                     </div>
                     <div class="input-field col s12 m6 l6">
@@ -44,7 +44,7 @@
                                class="datepicker"
                                formControlName="DepartureDate">
                         <label for="departureDate"
-                               [ngClass]="{'active': (currentBooking && currentBooking.DepartureDate)}">Departure
+                               [ngClass]="{'active': (currentBooking && currentBooking.DepartureDate) || bookingForm.controls.DepartureDate}">Departure
                             Date</label>
                     </div>
                 </div>

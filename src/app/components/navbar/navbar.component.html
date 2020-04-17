@@ -1,3 +1,10 @@
+<!-- Dropdown Structure -->
+<ul id="dropdown1"
+    class="dropdown-content">
+    <li><a href="#!">Cart</a></li>
+    <li><a href="#!">Bookings</a></li>
+</ul>
+
 <!-- Navbar -->
 <div class="navbar-fixed">
     <nav class="white">
@@ -28,6 +35,13 @@
                     <li>
                         <a href="#contact">Contact</a>
                     </li>
+                    <li>
+                        <a class="dropdown-trigger"
+                           data-target="dropdown1">
+                            More
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -55,7 +69,17 @@
            (click)="onCloseSidenav()">Contact</a>
     </li>
     <li>
-        <a href="#home"
-           (click)="onCloseSidenav()">Login</a>
+        <a (click)="onCloseSidenav()">
+            More
+        </a>
+        <div class="container">
+            <div class="divider"></div>
+        </div>
+    </li>
+    <li class="container">
+        <a (click)="onCloseSidenav()">Cart</a>
+    </li>
+    <li class="container">
+        <a (click)="onCloseSidenav()">Bookings</a>
     </li>
 </ul>

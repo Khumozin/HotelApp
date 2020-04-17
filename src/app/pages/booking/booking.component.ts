@@ -37,7 +37,9 @@ export class BookingComponent implements OnInit, AfterViewInit {
 
   initDatepicker() {
     const elems = document.querySelectorAll('.datepicker');
-    M.Datepicker.init(elems, {});
+    M.Datepicker.init(elems, {
+      format: 'yyyy-mm-dd'
+    });
   }
 
   initSelect() {
@@ -63,11 +65,13 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   generateBookingForm() {
+    const date = new Date().toISOString().substring(0, 10);
+
     this.bookingForm = new FormGroup({
       'FirstName': new FormControl(null, Validators.required),
       'Surname': new FormControl(null, Validators.required),
-      'ArrivalDate': new FormControl('', Validators.required),
-      'DepartureDate': new FormControl('', Validators.required),
+      'ArrivalDate': new FormControl(date, Validators.required),
+      'DepartureDate': new FormControl(date, Validators.required),
       'RoomType': new FormControl(this.roomType, Validators.required),
       'NumberOfRooms': new FormControl(0, Validators.required),
       'Cellphone': new FormControl(null, Validators.required),
