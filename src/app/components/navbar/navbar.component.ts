@@ -14,12 +14,18 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.initNavbar();
+    this.initDropdown();
   }
 
   initNavbar() {
     //sidenav
     const sidenav = document.querySelector('.sidenav');
     this.instance = M.Sidenav.init(sidenav, {});
+  }
+
+  initDropdown() {
+    const dropdown = document.querySelector('.dropdown-trigger');
+    M.Dropdown.init(dropdown, {})
   }
 
   onCloseSidenav() {
