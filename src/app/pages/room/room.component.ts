@@ -20,9 +20,7 @@ export class RoomComponent implements OnInit {
   roomType: Rooms;
 
   constructor(private dataShare: DataShareService, private router: Router) {
-    this.roomType = this.dataShare.getRoomType();
-    this.dataShare.setRoomType(this.roomType);
-    this.checkSelectedRoom(this.roomType);
+    this.handleDataShare();
     this.selectedRoom = this.getSelectedRoom(this.roomType);
   }
 
@@ -39,10 +37,10 @@ export class RoomComponent implements OnInit {
     return room.find(ii => ii.RoomType === type);
   }
 
-  checkSelectedRoom(type) {
-    if (type === undefined) {
-      this.router.navigate(['/']);
-    }
+  handleDataShare() {
+    this.roomType = this.dataShare.getRoomType();
+    this.dataShare.setRoomType(this.roomType);
+    this.dataShare.isDataAvailable(this.roomType);
   }
 
 }

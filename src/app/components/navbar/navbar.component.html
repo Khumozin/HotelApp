@@ -5,7 +5,11 @@
         <div class="container">
             <div class="nav-wrapper">
                 <a href="#home"
-                   class="brand-logo black-text">AppName</a>
+                   class="brand-logo black-text">
+                    <img src="../assets/img/logo.png"
+                         height="56"
+                         width="131">
+                </a>
                 <a href="#"
                    data-target="mobile-nav"
                    class="sidenav-trigger">
@@ -31,16 +35,27 @@
 </div>
 <ul class="sidenav"
     id="mobile-nav">
-    <li (click)="closeSidenav()">
-        <a href="#">Home</a>
+    <li class="sidenav-logo">
+        <a href="#home"
+           class="center-align"
+           (click)="onCloseSidenav()">
+            <img src="../assets/img/logo.png">
+        </a>
     </li>
     <li>
-        <a href="#amenities">Amenities</a>
+        <a href="#amenities"
+           (click)="onCloseSidenav()">Amenities</a>
     </li>
     <li>
-        <a href="#rooms">Rooms</a>
+        <a href="#rooms"
+           (click)="onCloseSidenav()">Rooms</a>
     </li>
     <li>
-        <a href="#contact">Contact</a>
+        <a href="#contact"
+           (click)="onCloseSidenav()">Contact</a>
+    </li>
+    <li>
+        <a href="#home"
+           (click)="onCloseSidenav()">Login</a>
     </li>
 </ul>

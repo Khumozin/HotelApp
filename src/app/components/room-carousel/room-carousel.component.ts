@@ -17,7 +17,8 @@ export class RoomCarouselComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.initCarousel();
+    // this.initCarousel();
+    this.initSlider();
   }
 
   initCarousel() {
@@ -26,6 +27,17 @@ export class RoomCarouselComponent implements OnInit, AfterViewInit {
       fullWidth: true,
       indicators: true,
       duration: 200,
+    });
+  }
+
+  initSlider() {
+    // slider
+    const slider = document.querySelector('.slider');
+    const i = M.Slider.init(slider, {
+      indicators: true,
+      height: 300,
+      transition: 500,
+      interval: 4000
     });
   }
 

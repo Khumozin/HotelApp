@@ -1,7 +1,17 @@
-<div class="carousel carousel-slider center">
+<!-- <div class="carousel carousel-slider center">
     <ng-container *ngFor="let item of images">
         <div class="carousel-item">
             <img src="{{item.path}}">
         </div>
     </ng-container>
+</div> -->
+
+<div class="slider">
+    <ul class="slides">
+        <ng-container *ngFor="let item of images">
+            <li class="z-depth-3">
+                <img src="{{item.path}}">
+            </li>
+        </ng-container>
+    </ul>
 </div>

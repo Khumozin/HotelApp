@@ -1,5 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Book } from 'src/app/shared/models/book.model';
+import { DataShareService } from 'src/app/shared/services/data-share.service';
 
 import { Rooms } from '../../shared/enums/rooms.enum';
 
@@ -12,12 +15,19 @@ declare const M: any;
 })
 export class BookingComponent implements OnInit, AfterViewInit {
 
+  roomType: Rooms;
   RoomTypes = Rooms;
   roomNummbers = [...Array(10).keys()];
+  bookingForm: FormGroup;
+  currentBooking: Book;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private dataShare: DataShareService) {
+    this.handleDataShare();
+  }
 
   ngOnInit(): void {
+    this.generateBookingForm();
   }
 
   ngAfterViewInit() {
@@ -36,7 +46,40 @@ export class BookingComponent implements OnInit, AfterViewInit {
   }
 
   onConfirm() {
+    const booking: Book = this.bookingForm.value;
+    this.dataShare.setBooking(booking);
     this.router.navigate(['/confirmation']);
+  }
+
+  handleDataShare() {
+    // room type
+    this.roomType = this.dataShare.getRoomType();
+    this.dataShare.setRoomType(this.roomType);
+
+
+    this.dataShare.isDataAvailable(this.roomType);
+
+    this.currentBooking = this.dataShare.getBooking();
+  }
+
+  generateBookingForm() {
+    this.bookingForm = new FormGroup({
+      'FirstName': new FormControl(null, Validators.required),
+      'Surname': new FormControl(null, Validators.required),
+      'ArrivalDate': new FormControl('', Validators.required),
+      'DepartureDate': new FormControl('', Validators.required),
+      'RoomType': new FormControl(this.roomType, Validators.required),
+      'NumberOfRooms': new FormControl(0, Validators.required),
+      'Cellphone': new FormControl(null, Validators.required),
+      'Email': new FormControl(null, Validators.required)
+    });
+
+    this.bookingForm.controls['ArrivalDate'].valueChanges.subscribe(console.log);
+    this.bookingForm.controls['DepartureDate'].valueChanges.subscribe(console.log);
+
+    if (this.currentBooking) {
+      this.bookingForm.setValue(this.currentBooking);
+    }
   }
 
 }

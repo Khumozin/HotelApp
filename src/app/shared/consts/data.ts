@@ -94,7 +94,7 @@ export const features = [
 export const room: Room[] = [
     {
         Title: 'Executive Rooms',
-        Price: 'R890/night',
+        Price: 890,
         RoomType: Rooms.Executive,
         Description: `This elegantly furnished air-conditioned en-suite room opens out onto a large (shared) terrace with
             river views. It sleeps two on a king sized bed. The
@@ -145,7 +145,7 @@ export const room: Room[] = [
     },
     {
         Title: 'Penthouse',
-        Price: 'R830/night',
+        Price: 830,
         RoomType: Rooms.Penthouse,
         Description: `This elegantly furnished air-conditioned en-suite 
         room opens out onto a large private terrace with river views. It sleeps 
@@ -172,10 +172,7 @@ export const room: Room[] = [
                 path: '../assets/img/Penthouse/Patio-1-1191x795.jpg'
             },
             {
-                path: '../assets/img/Penthouse/Patio-2-1191x795.jpg'
-            },
-            {
-                path: '../assets/img/Penthouse/River-View-from-Penthouse-1191x772.jpg'
+                path: '../assets/img/Penthouse/Patio-2-1-1191x795.jpg'
             },
         ],
         FeaturesList: [
@@ -203,7 +200,7 @@ export const room: Room[] = [
     },
     {
         Title: 'Luxury Rooms',
-        Price: 'R684/night',
+        Price: 684,
         RoomType: Rooms.Luxury,
         Description: `This elegantly furnished air-conditioned en-suite room opens 
         out onto a large (shared) terrace with river views.  
@@ -254,7 +251,7 @@ export const room: Room[] = [
     },
     {
         Title: 'Economy Rooms',
-        Price: 'R618/night',
+        Price: 618,
         RoomType: Rooms.Economy,
         Description: `This air-conditioned en-suite room 
         opens out onto a large (shared) terrace with river views.
@@ -279,10 +276,6 @@ export const room: Room[] = [
             },
             {
                 path: '../assets/img/Economy/Economy-Room-1191x795.jpg'
-            },
-            ,
-            {
-                path: '../assets/img/Economy/Entire-Room-1191x795.jpg'
             },
             {
                 path: '../assets/img/Economy/Kitchen-Desk-1191x795.jpg'
@@ -313,7 +306,7 @@ export const room: Room[] = [
     },
     {
         Title: 'Standard Rooms',
-        Price: 'R567/night',
+        Price: 567,
         RoomType: Rooms.Standard,
         Description: `This air-conditioned en-suite room sleeps two on a double bed.  The room includes unlimited WIFI, a writing desk & chair, flat screen TV (openview channels only) and small kitchenette.  Limited parking available.`,
         Images: [
@@ -357,7 +350,7 @@ export const room: Room[] = [
     },
     {
         Title: 'Bachelor Rooms',
-        Price: 'R513/night',
+        Price: 513,
         RoomType: Rooms.Bachelor,
         Description: `This air-conditioned en-suite room sleeps 
         two on a double bed.  The room includes unlimited WIFI, 

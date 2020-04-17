@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { amenities, gallery } from 'src/app/shared/consts/data';
+import { Rooms } from 'src/app/shared/enums/rooms.enum';
 import { DataShareService } from 'src/app/shared/services/data-share.service';
 
 declare const M: any;
@@ -16,7 +17,9 @@ export class HomeComponent implements OnInit {
   galleryItemsFirstRow = gallery.slice(0, 3);
   galleryItemsSecondRow = gallery.slice(3);
 
-  constructor(private router: Router, private dataShare: DataShareService) { }
+  constructor(private router: Router, private dataShare: DataShareService) {
+    this.handleDataShare();
+  }
 
   ngOnInit(): void {
     this.initSlider();
@@ -24,7 +27,6 @@ export class HomeComponent implements OnInit {
   }
 
   onGalleryCardClicked(type) {
-    console.log(type);
     this.dataShare.setRoomType(type);
     this.router.navigate(['/room']);
   }
@@ -44,6 +46,14 @@ export class HomeComponent implements OnInit {
     // scrollspy
     const ss = document.querySelectorAll('.scrollspy');
     M.ScrollSpy.init(ss, {});
+  }
+
+  onBook() {
+    this.router.navigate(['/booking']);
+  }
+
+  handleDataShare() {
+    this.dataShare.setRoomType(Rooms.Executive);
   }
 
 }
