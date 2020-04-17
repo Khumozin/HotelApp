@@ -3,7 +3,7 @@
         <div class="center-align">
             <h4>{{ title }}</h4>
             <h6>From</h6>
-            <h5>{{ price }}</h5>
+            <h5>{{ price | currency:'ZAR':'symbol-narrow' }}/night</h5>
             <p>{{ description }}</p>
         </div>
     </div>

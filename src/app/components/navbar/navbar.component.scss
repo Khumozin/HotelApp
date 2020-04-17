@@ -5,3 +5,19 @@ nav ul a {
 nav .sidenav-trigger i {
     color: #000;
 }
+img {
+    margin-top: 6%;
+    height: -webkit-fill-available;
+    width: auto;
+    max-height: 30px;
+}
+
+.sidenav {
+    li.sidenav-logo {
+        height: 80px;
+        a {
+            height: 100%;
+            padding-top: 4%;
+        }
+    }
+}

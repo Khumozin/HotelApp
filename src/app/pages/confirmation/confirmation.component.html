@@ -20,10 +20,13 @@
 
                     <div class="row">
                         <div class="col s12">
-                            <p class="center-align">I, Khumo Mogorosi, accept the qoute and the terms & conditions
-                                for the premium
-                                of {{ cost | currency:'ZAR':'symbol-narrow' }} for 1 night on
-                                {{ timestamp | date:'dd MMMM yyyy' }}.
+                            <h6 class="center-align">{{ booking.FirstName }} {{ booking.Surname }}</h6>
+                            <p class="center-align">
+                                {{roomType}} ({{ getNoRooms(booking.NumberOfRooms) }}) @
+                                {{ calculatePrice(booking.RoomType) | currency:'ZAR':'symbol-narrow' }}
+                            </p>
+                            <p class="center-align">
+                                {{ timestamp | date:'dd MMM yyyy' }} - {{ timestamp | date:'dd MMM yyyy' }}
                             </p>
                         </div>
                     </div>

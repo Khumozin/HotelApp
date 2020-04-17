@@ -22,7 +22,7 @@ export class NavbarComponent implements OnInit {
     this.instance = M.Sidenav.init(sidenav, {});
   }
 
-  closeSidenav() {
+  onCloseSidenav() {
     this.instance.close();
   }
 

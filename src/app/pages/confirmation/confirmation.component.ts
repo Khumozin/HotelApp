@@ -1,6 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import SignaturePad from 'signature_pad';
+import { room } from 'src/app/shared/consts/data';
+import { Rooms } from 'src/app/shared/enums/rooms.enum';
+import { Book } from 'src/app/shared/models/book.model';
+import { DataShareService } from 'src/app/shared/services/data-share.service';
 
 declare const M: any;
 
@@ -12,12 +16,18 @@ declare const M: any;
 export class ConfirmationComponent implements OnInit, AfterViewInit {
 
   signaturePad: any;
+  booking: Book;
+  roomType: string;
   cost = '986';
   timestamp = new Date();
 
   @ViewChild('sPad', { read: ElementRef }) signaturePadElement: ElementRef;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+    private dataShare: DataShareService) {
+    this.handleDataShare();
+    this.getRoomType(this.booking.RoomType);
+  }
 
   ngOnInit(): void {
   }
@@ -92,6 +102,27 @@ export class ConfirmationComponent implements OnInit, AfterViewInit {
     } else {
       M.toast({ html: 'Please sign to continue!', classes: 'rounded amber accent-3' });
     }
+  }
+
+  handleDataShare() {
+    this.booking = this.dataShare.getBooking();
+    this.dataShare.isDataAvailable(this.booking);
+    this.dataShare.setBooking(this.booking);
+    this.dataShare.setRoomType(this.booking.RoomType);
+  }
+
+  getRoomType(type) {
+    this.roomType = room.find(ii => ii.RoomType === type).Title;
+  }
+
+  getNoRooms(noRooms: number): number {
+    return Number(noRooms) + 1;
+  }
+
+  calculatePrice(roomType: Rooms): number {
+    const roomDetails = room.find(ii => ii.RoomType === roomType);
+    const noDays = this.getNoRooms(this.booking.NumberOfRooms);
+    return roomDetails.Price * noDays;
   }
 
 }
