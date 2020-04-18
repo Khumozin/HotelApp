@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { Rooms } from '../../shared/enums/rooms.enum';
 
 @Component({
   selector: 'app-room-info',
@@ -11,14 +13,15 @@ export class RoomInfoComponent implements OnInit {
   @Input() title: string;
   @Input() price: string;
   @Input() description: string;
+  @Input() type: Rooms;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, route: ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
   onBookNow() {
-    this.router.navigate(['/booking']);
+    this.router.navigate(['/booking', this.type]);
   }
 
 }

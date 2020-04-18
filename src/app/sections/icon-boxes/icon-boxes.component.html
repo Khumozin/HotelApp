@@ -1,0 +1,14 @@
+<!-- Section Icon Boxes-->
+<section class="section section-icons grey lighten-4 center">
+    <div class="container">
+        <div class="row">
+            <h4 class="wow animated pulse center">
+                <span class="grey-text">Amenities</span></h4>
+            <ng-container *ngFor="let item of amenities">
+                <app-card [image]="item.image"
+                          [title]="item.title"
+                          [content]="item.content"></app-card>
+            </ng-container>
+        </div>
+    </div>
+</section>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare const M: any;
 @Component({
@@ -10,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   instance: any;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     this.initNavbar();
@@ -30,6 +31,11 @@ export class NavbarComponent implements OnInit {
 
   onCloseSidenav() {
     this.instance.close();
+  }
+
+  onOpenCart() {
+    this.onCloseSidenav();
+    this.router.navigate(['/cart']);
   }
 
 }

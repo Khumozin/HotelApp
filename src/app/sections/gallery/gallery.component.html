@@ -1,0 +1,27 @@
+<!-- Section Gallery-->
+<section id="rooms"
+         class="section section-gallery scrollspy">
+    <div class="container">
+        <h4 class="center">
+            <span class="grey-text">
+                Hotel Rooms
+            </span>
+        </h4>
+        <div class="row">
+            <ng-container *ngFor="let item of galleryItemsFirstRow">
+                <app-galllery-card [image]="item.image"
+                                   [title]="item.title"
+                                   (onClick)="onGalleryCardClicked(item.roomType)"></app-galllery-card>
+            </ng-container>
+        </div>
+
+        <div class="row">
+            <ng-container *ngFor="let item of galleryItemsSecondRow">
+                <app-galllery-card [image]="item.image"
+                                   [title]="item.title"
+                                   (onClick)="onGalleryCardClicked(item.roomType)"></app-galllery-card>
+            </ng-container>
+        </div>
+
+    </div>
+</section>

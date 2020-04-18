@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PaypalComponent } from 'src/app/components/paypal/paypal.component';
+import { CartComponent } from 'src/app/pages/cart/cart.component';
 import { ConfirmationComponent } from 'src/app/pages/confirmation/confirmation.component';
 
 import { BookingComponent } from '../../pages/booking/booking.component';
@@ -12,10 +13,11 @@ import { RoomComponent } from '../../pages/room/room.component';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'room', component: RoomComponent },
-  { path: 'booking', component: BookingComponent },
+  { path: 'room/:id', component: RoomComponent },
+  { path: 'booking/:id', component: BookingComponent },
   { path: 'payment', component: PaymentComponent },
   { path: 'confirmation', component: ConfirmationComponent },
+  { path: 'cart', component: CartComponent },
   { path: 'paypal', component: PaypalComponent },
 ];
 

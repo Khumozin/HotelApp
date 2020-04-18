@@ -1,8 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/shared/models/book.model';
-import { DataShareService } from 'src/app/shared/services/data-share.service';
 
 import { Rooms } from '../../shared/enums/rooms.enum';
 
@@ -21,9 +20,9 @@ export class BookingComponent implements OnInit, AfterViewInit {
   bookingForm: FormGroup;
   currentBooking: Book;
 
-  constructor(private router: Router,
-    private dataShare: DataShareService) {
-    this.handleDataShare();
+  constructor(private router: Router, private route: ActivatedRoute) {
+    const routerState = this.router.getCurrentNavigation().extras.state;
+    this.handleRoutes(routerState);
   }
 
   ngOnInit(): void {
@@ -49,19 +48,7 @@ export class BookingComponent implements OnInit, AfterViewInit {
 
   onConfirm() {
     const booking: Book = this.bookingForm.value;
-    this.dataShare.setBooking(booking);
     this.router.navigate(['/confirmation']);
-  }
-
-  handleDataShare() {
-    // room type
-    this.roomType = this.dataShare.getRoomType();
-    this.dataShare.setRoomType(this.roomType);
-
-
-    this.dataShare.isDataAvailable(this.roomType);
-
-    this.currentBooking = this.dataShare.getBooking();
   }
 
   generateBookingForm() {
@@ -78,11 +65,17 @@ export class BookingComponent implements OnInit, AfterViewInit {
       'Email': new FormControl(null, Validators.required)
     });
 
-    this.bookingForm.controls['ArrivalDate'].valueChanges.subscribe(console.log);
-    this.bookingForm.controls['DepartureDate'].valueChanges.subscribe(console.log);
-
     if (this.currentBooking) {
       this.bookingForm.setValue(this.currentBooking);
+    }
+  }
+
+  handleRoutes(routerState) {
+    const roomType = +this.route.snapshot.paramMap.get('id');
+    if (roomType !== undefined || roomType >= 0) {
+      this.roomType = roomType;
+    } else {
+      this.router.navigate(['/']);
     }
   }
 
