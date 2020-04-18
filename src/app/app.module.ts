@@ -15,8 +15,19 @@ import { ConfirmationComponent } from './pages/confirmation/confirmation.compone
 import { HomeComponent } from './pages/home/home.component';
 import { PaymentComponent } from './pages/payment/payment.component';
 import { RoomComponent } from './pages/room/room.component';
+import { ContactComponent } from './sections/contact/contact.component';
+import { FollowComponent } from './sections/follow/follow.component';
+import { FooterComponent } from './sections/footer/footer.component';
+import { GalleryComponent } from './sections/gallery/gallery.component';
+import { IconBoxesComponent } from './sections/icon-boxes/icon-boxes.component';
+import { SliderComponent } from './sections/slider/slider.component';
+import { WelcomeComponent } from './sections/welcome/welcome.component';
 import { EnumToArrayPipe } from './shared/pipes/enum-to-array.pipe';
 import { AppRoutingModule } from './shared/routing/app-routing.module';
+import { TableComponent } from './components/table/table.component';
+import { CartComponent } from './pages/cart/cart.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +44,18 @@ import { AppRoutingModule } from './shared/routing/app-routing.module';
     PaymentComponent,
     EnumToArrayPipe,
     ConfirmationComponent,
-    PaypalComponent
+    PaypalComponent,
+    SliderComponent,
+    WelcomeComponent,
+    IconBoxesComponent,
+    GalleryComponent,
+    ContactComponent,
+    FollowComponent,
+    FooterComponent,
+    TableComponent,
+    CartComponent,
+    ModalComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

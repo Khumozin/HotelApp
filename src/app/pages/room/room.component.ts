@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Rooms } from 'src/app/shared/enums/rooms.enum';
 import { Room } from 'src/app/shared/models/room.model';
-import { DataShareService } from 'src/app/shared/services/data-share.service';
 
 import { features, room } from '../../shared/consts/data';
 
@@ -19,9 +18,8 @@ export class RoomComponent implements OnInit {
   selectedRoom: Room;
   roomType: Rooms;
 
-  constructor(private dataShare: DataShareService, private router: Router) {
-    this.handleDataShare();
-    this.selectedRoom = this.getSelectedRoom(this.roomType);
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.handleRoutes();
   }
 
   ngOnInit(): void {
@@ -33,14 +31,18 @@ export class RoomComponent implements OnInit {
     M.Collapsible.init(elems, {});
   }
 
-  getSelectedRoom(type: Rooms): Room {
-    return room.find(ii => ii.RoomType === type);
+  handleRoutes() {
+    const currentRoom: Rooms = +this.route.snapshot.paramMap.get('id');
+    if (currentRoom) {
+      this.roomType = currentRoom;
+      this.selectedRoom = this.getSelectedRoom(this.roomType);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 
-  handleDataShare() {
-    this.roomType = this.dataShare.getRoomType();
-    this.dataShare.setRoomType(this.roomType);
-    this.dataShare.isDataAvailable(this.roomType);
+  getSelectedRoom(type: Rooms): Room {
+    return room.find(ii => ii.RoomType === type);
   }
 
 }

@@ -14,7 +14,7 @@ declare const M: any;
 export class HomeComponent implements OnInit {
 
   amenities = amenities;
-  galleryItemsFirstRow = gallery.slice(0, 3);
+  gallery = gallery;
   galleryItemsSecondRow = gallery.slice(3);
 
   constructor(private router: Router, private dataShare: DataShareService) {
@@ -46,10 +46,6 @@ export class HomeComponent implements OnInit {
     // scrollspy
     const ss = document.querySelectorAll('.scrollspy');
     M.ScrollSpy.init(ss, {});
-  }
-
-  onBook() {
-    this.router.navigate(['/booking']);
   }
 
   handleDataShare() {
