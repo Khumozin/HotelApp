@@ -1,3 +1,4 @@
+/*
 import { Rooms } from '../enums/rooms.enum';
 import { Room } from '../models/room.model';
 
@@ -95,7 +96,7 @@ export const room: Room[] = [
     {
         Title: 'Executive Rooms',
         Price: 890,
-        RoomType: Rooms.Executive,
+        RoomTypeID: Rooms.Executive,
         Description: `This elegantly furnished air-conditioned en-suite room opens out onto a large (shared) terrace with
             river views. It sleeps two on a king sized bed. The
             spacious room includes a large lounge area with flat screen TV (DSTV) and small kitchenette. The
@@ -146,11 +147,11 @@ export const room: Room[] = [
     {
         Title: 'Penthouse',
         Price: 830,
-        RoomType: Rooms.Penthouse,
-        Description: `This elegantly furnished air-conditioned en-suite 
-        room opens out onto a large private terrace with river views. It sleeps 
-        two on a king sized bed. The room includes a small lounge area with flat screen TV (DSTV) 
-            and small kitchenette. An extra single bed could be added 
+        RoomTypeID: Rooms.Penthouse,
+        Description: `This elegantly furnished air-conditioned en-suite
+        room opens out onto a large private terrace with river views. It sleeps
+        two on a king sized bed. The room includes a small lounge area with flat screen TV (DSTV)
+            and small kitchenette. An extra single bed could be added
             on request for an additional fee. Limited parking & unlimited WIFI.`,
         Images: [
             {
@@ -201,12 +202,12 @@ export const room: Room[] = [
     {
         Title: 'Luxury Rooms',
         Price: 684,
-        RoomType: Rooms.Luxury,
-        Description: `This elegantly furnished air-conditioned en-suite room opens 
-        out onto a large (shared) terrace with river views.  
-        It sleeps two on a king sized bed. The room includes a lounge area 
-        with flat screen TV (DSTV) and small kitchenette. An extra single 
-        bed could be added on request for an additional fee. 
+        RoomTypeID: Rooms.Luxury,
+        Description: `This elegantly furnished air-conditioned en-suite room opens
+        out onto a large (shared) terrace with river views.
+        It sleeps two on a king sized bed. The room includes a lounge area
+        with flat screen TV (DSTV) and small kitchenette. An extra single
+        bed could be added on request for an additional fee.
         Limited parking & unlimited WIFI.`,
         Images: [
             {
@@ -252,10 +253,10 @@ export const room: Room[] = [
     {
         Title: 'Economy Rooms',
         Price: 618,
-        RoomType: Rooms.Economy,
-        Description: `This air-conditioned en-suite room 
+        RoomTypeID: Rooms.Economy,
+        Description: `This air-conditioned en-suite room
         opens out onto a large (shared) terrace with river views.
-         It sleeps two on a double bed.  The room includes 
+         It sleeps two on a double bed.  The room includes
          unlimited WIFI, a writing desk & chair, flat
          screen TV (DSTV) and small kitchenette. Limited parking available`,
         Images: [
@@ -307,7 +308,7 @@ export const room: Room[] = [
     {
         Title: 'Standard Rooms',
         Price: 567,
-        RoomType: Rooms.Standard,
+        RoomTypeID: Rooms.Standard,
         Description: `This air-conditioned en-suite room sleeps two on a double bed.  The room includes unlimited WIFI, a writing desk & chair, flat screen TV (openview channels only) and small kitchenette.  Limited parking available.`,
         Images: [
             {
@@ -351,10 +352,10 @@ export const room: Room[] = [
     {
         Title: 'Bachelor Rooms',
         Price: 513,
-        RoomType: Rooms.Bachelor,
-        Description: `This air-conditioned en-suite room sleeps 
-        two on a double bed.  The room includes unlimited WIFI, 
-        a flap-down writing desk, flat screen TV (openview channels only) 
+        RoomTypeID: Rooms.Bachelor,
+        Description: `This air-conditioned en-suite room sleeps
+        two on a double bed.  The room includes unlimited WIFI,
+        a flap-down writing desk, flat screen TV (openview channels only)
         and small kitchenette (no sink). Limited parking available.`,
         Images: [
             {
@@ -392,3 +393,5 @@ export const room: Room[] = [
         ]
     },
 ];
+
+*/

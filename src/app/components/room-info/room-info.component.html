@@ -1,10 +1,10 @@
 <div class="wrapper">
     <div class="content-text">
         <div class="center-align">
-            <h4>{{ title }}</h4>
+            <h4>{{ room.Title }}</h4>
             <h6>From</h6>
-            <h5>{{ price | currency:'ZAR':'symbol-narrow' }}/night</h5>
-            <p>{{ description }}</p>
+            <h5>{{ room.Price | currency:'ZAR':'symbol-narrow' }}/night</h5>
+            <p>{{ room.Description }}</p>
         </div>
     </div>
     <div class="context-button">

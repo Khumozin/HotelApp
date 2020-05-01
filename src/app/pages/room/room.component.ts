@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Rooms } from 'src/app/shared/enums/rooms.enum';
+import { Observable } from 'rxjs';
 import { Room } from 'src/app/shared/models/room.model';
-
-import { features, room } from '../../shared/consts/data';
+import { RoomService } from 'src/app/shared/services/room.service';
 
 declare const M: any;
 
@@ -14,11 +13,11 @@ declare const M: any;
 })
 export class RoomComponent implements OnInit {
 
-  featureList = features;
-  selectedRoom: Room;
-  roomType: Rooms;
+  selectedRoom$: Observable<Room>;
+  roomType: string;
 
-  constructor(private route: ActivatedRoute, private router: Router) {
+  constructor(private route: ActivatedRoute, private router: Router,
+    private roomService: RoomService) {
     this.handleRoutes();
   }
 
@@ -32,17 +31,17 @@ export class RoomComponent implements OnInit {
   }
 
   handleRoutes() {
-    const currentRoom: Rooms = +this.route.snapshot.paramMap.get('id');
-    if (currentRoom) {
-      this.roomType = currentRoom;
-      this.selectedRoom = this.getSelectedRoom(this.roomType);
+    const currentRoomID: string = this.route.snapshot.paramMap.get('id');
+    if (currentRoomID) {
+      this.roomType = currentRoomID;
+      this.selectedRoom$ = this.getSelectedRoom(currentRoomID);
     } else {
       this.router.navigate(['/']);
     }
   }
 
-  getSelectedRoom(type: Rooms): Room {
-    return room.find(ii => ii.RoomType === type);
+  getSelectedRoom(roomID: string) {
+    return this.roomService.fetchRoomDetails(roomID);
   }
 
 }

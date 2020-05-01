@@ -2,12 +2,12 @@
 <section class="section section-icons grey lighten-4 center">
     <div class="container">
         <div class="row">
-            <h4 class="wow animated pulse center">
+            <h4 class="center">
                 <span class="grey-text">Amenities</span></h4>
             <ng-container *ngFor="let item of amenities">
-                <app-card [image]="item.image"
-                          [title]="item.title"
-                          [content]="item.content"></app-card>
+                <div class="col s12 m12 l4">
+                    <app-card [amenity]="item"></app-card>
+                </div>
             </ng-container>
         </div>
     </div>

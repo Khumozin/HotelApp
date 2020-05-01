@@ -1,9 +1,12 @@
 <!-- Dropdown Structure -->
 <ul id="dropdown1"
     class="dropdown-content">
-    <li><a href="#!">Cart</a></li>
-    <li><a href="#!">Bookings</a></li>
+    <li><a (click)="onOpenCart()">Cart</a></li>
+    <li><a (click)="onOpenBooking()">Bookings</a></li>
+    <li><a (click)="onOpenSignIn()">Sign In</a></li>
+    <li><a (click)="onOpenSignUp()">Sign Up</a></li>
 </ul>
+
 <!-- Navbar -->
 <div class="navbar-fixed">
     <nav class="white">
@@ -46,6 +49,8 @@
         </div>
     </nav>
 </div>
+
+<!-- Sidenav -->
 <ul class="sidenav"
     id="mobile-nav">
     <li class="sidenav-logo">
@@ -81,5 +86,11 @@
     </li>
     <li class="container">
         <a (click)="onCloseSidenav()">Bookings</a>
+    </li>
+    <li class="container">
+        <a (click)="onOpenSignIn()">Sign In</a>
+    </li>
+    <li class="container">
+        <a (click)="onOpenSignUp()">Sign Up</a>
     </li>
 </ul>

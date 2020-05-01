@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { amenities, gallery } from 'src/app/shared/consts/data';
-import { Rooms } from 'src/app/shared/enums/rooms.enum';
-import { DataShareService } from 'src/app/shared/services/data-share.service';
+import { Observable } from 'rxjs';
+
+import { Rooms } from '../../shared/enums/rooms.enum';
+import { Amenity } from '../../shared/models/amenity.model';
+import { GalleryItem } from '../../shared/models/gallery-item.model';
+import { DataShareService } from '../../shared/services/data-share.service';
+import { GalleryItemService } from '../../shared/services/gallery-item.service';
+import { HomeService } from '../../shared/services/home.service';
 
 declare const M: any;
 
@@ -13,17 +18,22 @@ declare const M: any;
 })
 export class HomeComponent implements OnInit {
 
-  amenities = amenities;
-  gallery = gallery;
-  galleryItemsSecondRow = gallery.slice(3);
+  amenities: Amenity[];
+  galleryItems$: Observable<GalleryItem[]>;
 
-  constructor(private router: Router, private dataShare: DataShareService) {
+  constructor(
+    private router: Router,
+    private dataShare: DataShareService,
+    private homeService: HomeService,
+    private galleryItemsService: GalleryItemService) {
     this.handleDataShare();
+    this.getAmenities();
   }
 
   ngOnInit(): void {
     this.initSlider();
     this.initScrollSpy();
+    this.getGalleryItems();
   }
 
   onGalleryCardClicked(type) {
@@ -52,4 +62,13 @@ export class HomeComponent implements OnInit {
     this.dataShare.setRoomType(Rooms.Executive);
   }
 
+  getAmenities() {
+    this.homeService.fetchAmenities().subscribe((items: Amenity[]) => {
+      this.amenities = [...items];
+    })
+  }
+
+  getGalleryItems() {
+    this.galleryItems$ = this.galleryItemsService.fetchGalleryItems();
+  }
 }

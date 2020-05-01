@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { room } from 'src/app/shared/consts/data';
 import { Rooms } from 'src/app/shared/enums/rooms.enum';
 import { Book } from 'src/app/shared/models/book.model';
 import { DataShareService } from 'src/app/shared/services/data-share.service';
 
+// import { room } from 'src/app/shared/consts/data';
 declare const M: any;
 
 @Component({
@@ -42,7 +42,7 @@ export class PaymentComponent implements OnInit {
   }
 
   getRoomType(type) {
-    this.roomType = room.find(ii => ii.RoomType === type).Title;
+    // this.roomType = room.find(ii => ii.RoomTypeID === type).Title;
   }
 
   getNoRooms(noRooms: number): number {
@@ -50,8 +50,9 @@ export class PaymentComponent implements OnInit {
   }
 
   calculatePrice(roomType: Rooms): number {
-    const roomDetails = room.find(ii => ii.RoomType === roomType);
-    const noDays = this.getNoRooms(this.booking.NumberOfRooms);
-    return roomDetails.Price * noDays;
+    // const roomDetails = room.find(ii => ii.RoomTypeID === roomType);
+    // const noDays = this.getNoRooms(this.booking.NumberOfRooms);
+    // return roomDetails.Price * noDays;
+    return 0;
   }
 }

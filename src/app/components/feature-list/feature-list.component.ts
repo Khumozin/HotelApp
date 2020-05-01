@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GalleryItemFeature } from 'src/app/shared/models/gallery-item.model';
 
 @Component({
   selector: 'app-feature-list',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FeatureListComponent implements OnInit {
 
-  @Input() features = [];
+  @Input() featureList: GalleryItemFeature[] = [];
 
   isToggled = false;
   collapsibleIcon = 'add';

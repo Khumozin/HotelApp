@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Amenity } from 'src/app/shared/models/amenity.model';
 
 @Component({
   selector: 'app-card',
@@ -7,9 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() content: string;
-  @Input() image: string;
+  @Input() amenity: Amenity;
 
   constructor() { }
 
