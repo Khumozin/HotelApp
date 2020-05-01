@@ -4,7 +4,7 @@
 
 <app-icon-boxes [amenities]="amenities"></app-icon-boxes>
 
-<app-gallery [galleryItems]="gallery"></app-gallery>
+<app-gallery [galleryItems]="galleryItems$ | async"></app-gallery>
 
 <app-contact></app-contact>
 

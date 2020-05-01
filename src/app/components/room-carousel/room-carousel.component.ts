@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { GalleryItemImage } from 'src/app/shared/models/gallery-item.model';
 
 declare const M: any;
 
@@ -9,7 +10,7 @@ declare const M: any;
 })
 export class RoomCarouselComponent implements OnInit, AfterViewInit {
 
-  @Input() images: any[];
+  @Input() images: GalleryItemImage[];
 
   constructor() { }
 

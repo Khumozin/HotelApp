@@ -1,10 +1,10 @@
-import { Rooms } from '../enums/rooms.enum';
+import { GalleryItemFeature, GalleryItemImage } from './gallery-item.model';
 
 export class Room {
     Title: string;
-    Price: number;
-    RoomType: Rooms;
+    Price: string;
+    RoomTypeID: string;
     Description: string;
-    Images: any[];
-    FeaturesList: { Text: string }[];
+    Images: GalleryItemImage[];
+    FeaturesList: GalleryItemFeature[];
 }

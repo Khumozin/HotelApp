@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { Rooms } from '../../shared/enums/rooms.enum';
+import { Room } from 'src/app/shared/models/room.model';
 
 @Component({
   selector: 'app-room-info',
@@ -10,10 +9,7 @@ import { Rooms } from '../../shared/enums/rooms.enum';
 })
 export class RoomInfoComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() price: string;
-  @Input() description: string;
-  @Input() type: Rooms;
+  @Input() room: Room;
 
   constructor(private router: Router, route: ActivatedRoute) { }
 
@@ -21,7 +17,7 @@ export class RoomInfoComponent implements OnInit {
   }
 
   onBookNow() {
-    this.router.navigate(['/booking', this.type]);
+    // this.router.navigate(['/booking', this.type]);
   }
 
 }

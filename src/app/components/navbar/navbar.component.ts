@@ -38,4 +38,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/cart']);
   }
 
+  onOpenBooking() { }
+
+  onOpenSignIn() { }
+
+  onOpenSignUp() { }
+
 }

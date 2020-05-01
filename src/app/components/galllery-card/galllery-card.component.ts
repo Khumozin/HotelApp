@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Rooms } from '../../shared/enums/rooms.enum';
+import { GalleryItem } from '../../shared/models/gallery-item.model';
 
 @Component({
   selector: 'app-galllery-card',
@@ -10,15 +11,16 @@ import { Rooms } from '../../shared/enums/rooms.enum';
 })
 export class GallleryCardComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() image: string;
+  @Input() galleryItem: GalleryItem;
   @Output() onClick = new EventEmitter<any>();
 
   @Input() roomType: Rooms;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit(): void {
+    console.log(this.galleryItem.Thumbnail.data);
   }
 
   onCardClick(roomType) {
