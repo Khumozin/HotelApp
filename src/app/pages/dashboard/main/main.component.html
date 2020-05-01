@@ -1,9 +1,9 @@
 <h3>Dashboard</h3>
 <div class="row">
-    <ng-container *ngFor="let item of MenuItems">
+    <ng-container *ngFor="let item of MenuItems; let i= index;">
         <div class="col s12 m4 l3">
             <app-card [amenity]="item"
-                      (click)="onCardClick()"></app-card>
+                      (click)="onCardClick(i)"></app-card>
         </div>
     </ng-container>
 </div>
