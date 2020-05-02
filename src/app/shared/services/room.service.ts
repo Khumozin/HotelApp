@@ -2,8 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 
+import { AppService } from '../../app.service';
 import { GalleryItemDetails, GalleryItemFeature, GalleryItemImage } from '../models/gallery-item.model';
 import { Room } from '../models/room.model';
 import { GalleryItemService } from './gallery-item.service';
@@ -11,11 +11,13 @@ import { GalleryItemService } from './gallery-item.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RoomService {
+export class RoomService extends AppService {
 
-  private endPoint: string = environment.api;
-  constructor(private httpClient: HttpClient,
-    private galleryItemService: GalleryItemService) { }
+  constructor(
+    private httpClient: HttpClient,
+    private galleryItemService: GalleryItemService) {
+    super();
+  }
 
 
   fetchRoomDetails(roomID: string): Observable<Room> {

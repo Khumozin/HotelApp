@@ -11,24 +11,33 @@
             <div class="wow animated zoomIn col s12 m6 offset-m3">
                 <div class="card-panel center grey lighten-3">
                     <h5>Please fill out this form</h5>
-                    <div class="input-field">
-                        <input type="text"
-                               placeholder="Name">
-                    </div>
-                    <div class="input-field">
-                        <input type="text"
-                               placeholder="Email">
-                    </div>
-                    <div class="input-field">
-                        <input type="text"
-                               placeholder="Phone">
-                    </div>
-                    <div class="input-field">
-                        <textarea class="materialize-textarea"
-                                  placeholder="Enter Message"></textarea>
-                    </div>
-                    <button type="submit"
-                            class="btn blue-grey darken-4">Submit</button>
+                    <form [formGroup]="contactForm"
+                          (ngSubmit)="onSendMessage()"
+                          autocomplete="off">
+                        <div class="input-field">
+                            <input type="text"
+                                   placeholder="Name"
+                                   formControlName="Name">
+                        </div>
+                        <div class="input-field">
+                            <input type="text"
+                                   placeholder="Email"
+                                   formControlName="Email">
+                        </div>
+                        <div class="input-field">
+                            <input type="text"
+                                   placeholder="Phone"
+                                   formControlName="Phone">
+                        </div>
+                        <div class="input-field">
+                            <textarea class="materialize-textarea"
+                                      placeholder="Enter Message"
+                                      formControlName="Message"></textarea>
+                        </div>
+                        <button type="submit"
+                                [disabled]="!contactForm.valid"
+                                class="btn blue-grey darken-4">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>

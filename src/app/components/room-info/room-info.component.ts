@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Room } from 'src/app/shared/models/room.model';
 
@@ -7,13 +7,18 @@ import { Room } from 'src/app/shared/models/room.model';
   templateUrl: './room-info.component.html',
   styleUrls: ['./room-info.component.scss']
 })
-export class RoomInfoComponent implements OnInit {
+export class RoomInfoComponent implements OnInit, OnChanges {
 
   @Input() room: Room;
+  roomDetails: Room;
 
   constructor(private router: Router, route: ActivatedRoute) { }
 
   ngOnInit(): void {
+  }
+
+  ngOnChanges(): void {
+    this.roomDetails = this.room;
   }
 
   onBookNow() {
