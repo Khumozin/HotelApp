@@ -16,23 +16,27 @@
                           autocomplete="off">
                         <div class="input-field">
                             <input type="text"
-                                   placeholder="Name"
+                                   id="name"
                                    formControlName="Name">
+                            <label for="name">Name</label>
                         </div>
                         <div class="input-field">
                             <input type="text"
-                                   placeholder="Email"
+                                   id="email"
                                    formControlName="Email">
+                            <label for="email">Email</label>
                         </div>
                         <div class="input-field">
                             <input type="text"
-                                   placeholder="Phone"
-                                   formControlName="Phone">
+                                   id="subject"
+                                   formControlName="Subject">
+                            <label for="subject">Subject</label>
                         </div>
                         <div class="input-field">
                             <textarea class="materialize-textarea"
-                                      placeholder="Enter Message"
+                                      id="message"
                                       formControlName="Message"></textarea>
+                            <label for="message">Enter Message</label>
                         </div>
                         <button type="submit"
                                 [disabled]="!contactForm.valid"

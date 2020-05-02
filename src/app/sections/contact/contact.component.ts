@@ -22,7 +22,7 @@ export class ContactComponent implements OnInit {
     this.contactForm = new FormGroup({
       'Name': new FormControl(null, Validators.required),
       'Email': new FormControl(null, Validators.required),
-      'Phone': new FormControl(null, Validators.required),
+      'Subject': new FormControl(null, Validators.required),
       'Message': new FormControl(null, Validators.required)
     });
   }
@@ -33,7 +33,7 @@ export class ContactComponent implements OnInit {
         ID: null,
         Name: this.contactForm.value.Name,
         Email: this.contactForm.value.Email,
-        Phone: this.contactForm.value.Phone,
+        Subject: this.contactForm.value.Subject,
         Message: this.contactForm.value.Message,
         IsRead: false
       };
