@@ -1,14 +1,16 @@
-<div class="wrapper">
-    <div class="content-text">
-        <div class="center-align">
-            <h4>{{ room.Title }}</h4>
-            <h6>From</h6>
-            <h5>{{ room.Price | currency:'ZAR':'symbol-narrow' }}/night</h5>
-            <p>{{ room.Description }}</p>
+<ng-container *ngIf="roomDetails">
+    <div class="wrapper">
+        <div class="content-text">
+            <div class="center-align">
+                <h4>{{ roomDetails.Title }}</h4>
+                <h6>From</h6>
+                <h5>{{ roomDetails.Price | currency:'ZAR':'symbol-narrow' }}/night</h5>
+                <p>{{ roomDetails.Description }}</p>
+            </div>
+        </div>
+        <div class="context-button">
+            <a class="blue-grey darken-4 waves-effect waves-light btn"
+               (click)="onBookNow()">Book Now</a>
         </div>
     </div>
-    <div class="context-button">
-        <a class="blue-grey darken-4 waves-effect waves-light btn"
-           (click)="onBookNow()">Book Now</a>
-    </div>
-</div>
+</ng-container>

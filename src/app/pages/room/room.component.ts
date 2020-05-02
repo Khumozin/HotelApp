@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Room } from 'src/app/shared/models/room.model';
 import { RoomService } from 'src/app/shared/services/room.service';
 
@@ -11,10 +11,12 @@ declare const M: any;
   templateUrl: './room.component.html',
   styleUrls: ['./room.component.scss']
 })
-export class RoomComponent implements OnInit {
+export class RoomComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  selectedRoom$: Observable<Room>;
+  selectedRoom: Room;
+  selectedRoomSub: Subscription;
   roomType: string;
+  isReady = false;
 
   constructor(private route: ActivatedRoute, private router: Router,
     private roomService: RoomService) {
@@ -23,6 +25,15 @@ export class RoomComponent implements OnInit {
 
   ngOnInit(): void {
     this.initCollapsible();
+  }
+
+  ngAfterViewInit() {
+  }
+
+  ngOnDestroy() {
+    if (this.selectedRoomSub) {
+      this.selectedRoomSub.unsubscribe();
+    }
   }
 
   initCollapsible() {
@@ -34,14 +45,18 @@ export class RoomComponent implements OnInit {
     const currentRoomID: string = this.route.snapshot.paramMap.get('id');
     if (currentRoomID) {
       this.roomType = currentRoomID;
-      this.selectedRoom$ = this.getSelectedRoom(currentRoomID);
+      this.getSelectedRoom(currentRoomID);
     } else {
       this.router.navigate(['/']);
     }
   }
 
-  getSelectedRoom(roomID: string) {
-    return this.roomService.fetchRoomDetails(roomID);
+  async getSelectedRoom(roomID: string) {
+    this.selectedRoomSub = await this.roomService.fetchRoomDetails(roomID)
+      .subscribe(room => {
+        this.isReady = true;
+        this.selectedRoom = room
+      });
   }
 
 }
