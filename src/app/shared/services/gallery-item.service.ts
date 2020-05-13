@@ -23,4 +23,9 @@ export class GalleryItemService {
     const url = `${this.endPoint}/galleryItem/${roomID}`;
     return this.httpClient.get<GalleryItem>(url);
   }
+
+  fetchGalleryItemByRoomTypeID(roomTypeID: string): Observable<GalleryItem> {
+    const url = `${this.endPoint}/galleryItemByRoomTypeID/${roomTypeID}`;
+    return this.httpClient.get<GalleryItem>(url);
+  }
 }

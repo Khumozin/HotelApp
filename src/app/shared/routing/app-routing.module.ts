@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'room/:id', component: RoomComponent },
   { path: 'booking/:id', component: BookingComponent },
   { path: 'payment', component: PaymentComponent },
-  { path: 'confirmation', component: ConfirmationComponent },
+  { path: 'confirmation/:id', component: ConfirmationComponent },
   { path: 'cart', component: CartComponent },
   { path: 'paypal', component: PaypalComponent },
   {

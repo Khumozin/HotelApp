@@ -1,5 +1,5 @@
 <div class="container">
-    <h3 class="center-align">Confirmation</h3>
+    <h3 class="center-align">Confirm Booking</h3>
     <div class="row">
         <div class="col s12 m8 l6 offset-m2 offset-l3">
             <div class="card">
@@ -20,13 +20,14 @@
 
                     <div class="row">
                         <div class="col s12">
-                            <h6 class="center-align">{{ booking.FirstName }} {{ booking.Surname }}</h6>
+                            <h6 class="center-align">{{ booking?.FirstName }} {{ booking?.Surname }}</h6>
                             <p class="center-align">
-                                {{roomType}} ({{ getNoRooms(booking.NumberOfRooms) }}) @
-                                {{ calculatePrice(booking.RoomType) | currency:'ZAR':'symbol-narrow' }}
+                                {{roomType}} ({{ booking?.NumberOfRooms }}) @
+                                {{ totalPrice | currency:'ZAR':'symbol-narrow' }}
                             </p>
                             <p class="center-align">
-                                {{ timestamp | date:'dd MMM yyyy' }} - {{ timestamp | date:'dd MMM yyyy' }}
+                                {{ booking?.ArrivalDate | date:'dd MMM yyyy' }} -
+                                {{ booking?.DepartureDate | date:'dd MMM yyyy' }}
                             </p>
                         </div>
                     </div>

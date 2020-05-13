@@ -1,21 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Rooms } from 'src/app/shared/enums/rooms.enum';
+import { Subscription } from 'rxjs';
+import { RoomType } from 'src/app/shared/models/room-type.model';
+import { RoomTypeService } from 'src/app/shared/services/room-type.service';
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent implements OnInit, OnDestroy {
 
-  constructor(private router: Router) { }
+  roomTypes: RoomType[];
+  roomTypesSub: Subscription;
+
+  constructor(
+    private router: Router,
+    private roomTypeService: RoomTypeService) { }
 
   ngOnInit(): void {
+    this.roomTypesSub = this.roomTypeService.fetchRoomTypes()
+      .subscribe(ii => (this.roomTypes = ii));
+  }
+
+  ngOnDestroy() {
+    if (this.roomTypesSub) {
+      this.roomTypesSub.unsubscribe();
+    }
   }
 
   onBook() {
-    this.router.navigate(['/booking', Rooms.Executive]);
+    this.router.navigate(['/booking', this.roomTypes[0].ID]);
   }
 
 }

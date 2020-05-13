@@ -1,9 +1,13 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { noop, Subscription } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import SignaturePad from 'signature_pad';
-import { Rooms } from 'src/app/shared/enums/rooms.enum';
-import { Book } from 'src/app/shared/models/book.model';
-import { DataShareService } from 'src/app/shared/services/data-share.service';
+import { Booking } from 'src/app/shared/models/booking.model';
+import { BookingService } from 'src/app/shared/services/booking.service';
+import { GalleryItemService } from 'src/app/shared/services/gallery-item.service';
+import { RoomService } from 'src/app/shared/services/room.service';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 // import { room } from 'src/app/shared/consts/data';
 declare const M: any;
@@ -13,27 +17,39 @@ declare const M: any;
   templateUrl: './confirmation.component.html',
   styleUrls: ['./confirmation.component.scss']
 })
-export class ConfirmationComponent implements OnInit, AfterViewInit {
+export class ConfirmationComponent implements OnInit, AfterViewInit, OnDestroy {
 
   signaturePad: any;
-  booking: Book;
-  roomType: string;
-  cost = '986';
-  timestamp = new Date();
+  booking: Booking;
+  currentBookingID: string;
+  roomType: string = '';
+  totalPrice: number = 0;
+  bookingSub: Subscription;
 
   @ViewChild('sPad', { read: ElementRef }) signaturePadElement: ElementRef;
 
   constructor(private router: Router,
-    private dataShare: DataShareService) {
-    this.handleDataShare();
-    this.getRoomType(this.booking.RoomType);
+    private route: ActivatedRoute,
+    private sharedService: SharedService,
+    private bookingService: BookingService,
+    private galleryItemSerive: GalleryItemService,
+    private roomService: RoomService) {
+    this.currentBookingID = this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit(): void {
+    this.setIsBusy(true);
+    this.getBooking();
   }
 
   ngAfterViewInit() {
     this.signaturePad = new SignaturePad(this.signaturePadElement.nativeElement);
+  }
+
+  ngOnDestroy() {
+    if (this.bookingSub) {
+      this.bookingSub.unsubscribe();
+    }
   }
 
   onClear() {
@@ -104,26 +120,31 @@ export class ConfirmationComponent implements OnInit, AfterViewInit {
     }
   }
 
-  handleDataShare() {
-    this.booking = this.dataShare.getBooking();
-    this.dataShare.isDataAvailable(this.booking);
-    this.dataShare.setBooking(this.booking);
-    this.dataShare.setRoomType(this.booking.RoomType);
+  getBooking() {
+    this.bookingSub = this.bookingService.fetchBookingByID(this.currentBookingID)
+      .pipe(
+        map(booking => {
+          this.booking = booking;
+          return booking;
+        }),
+        switchMap(ii => this.galleryItemSerive.fetchGalleryItemByRoomTypeID(ii.RoomTypeID)),
+        map(res => {
+          this.roomType = res.Title;
+          return { ID: res.ID };
+        }),
+        switchMap(x => this.roomService.fetchRoomDetailsByGalleryItemID(x.ID)),
+        map(results => {
+          this.totalPrice = (results.Price * this.booking.NumberOfRooms);
+        })
+      )
+      .subscribe(
+        noop,
+        err => console.error(err),
+        () => { this.setIsBusy(false); });
   }
 
-  getRoomType(type) {
-    // this.roomType = room.find(ii => ii.RoomTypeID === type).Title;
-  }
-
-  getNoRooms(noRooms: number): number {
-    return Number(noRooms) + 1;
-  }
-
-  calculatePrice(roomType: Rooms): number {
-    // const roomDetails = room.find(ii => ii.RoomTypeID === roomType);
-    // const noDays = this.getNoRooms(this.booking.NumberOfRooms);
-    // return roomDetails.Price * noDays;
-    return 0;
+  setIsBusy(state: boolean) {
+    this.sharedService.setIsBusy(state);
   }
 
 }

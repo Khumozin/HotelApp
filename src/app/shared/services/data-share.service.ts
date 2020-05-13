@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Rooms } from '../enums/rooms.enum';
-import { Book } from '../models/book.model';
+import { Booking } from '../models/booking.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { Book } from '../models/book.model';
 export class DataShareService {
 
   private roomType: Rooms;
-  private booking: Book;
+  private booking: Booking;
 
   constructor(private router: Router) { }
 
@@ -23,10 +23,10 @@ export class DataShareService {
   }
 
   // Booking
-  setBooking(book: Book) {
+  setBooking(book: Booking) {
     this.booking = book;
   }
-  getBooking(): Book {
+  getBooking(): Booking {
     return this.booking;
   }
 

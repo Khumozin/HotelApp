@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Rooms } from 'src/app/shared/enums/rooms.enum';
-import { Book } from 'src/app/shared/models/book.model';
+import { Booking } from 'src/app/shared/models/booking.model';
 import { DataShareService } from 'src/app/shared/services/data-share.service';
 
 // import { room } from 'src/app/shared/consts/data';
@@ -14,13 +14,13 @@ declare const M: any;
 })
 export class PaymentComponent implements OnInit {
 
-  booking: Book;
+  booking: Booking;
   roomType: string;
 
   constructor(private router: Router,
     private dataShare: DataShareService) {
     this.handleDataShare();
-    this.getRoomType(this.booking.RoomType);
+    this.getRoomType(this.booking.RoomTypeID);
   }
 
   ngOnInit(): void {

@@ -2,7 +2,7 @@ export class GalleryItem {
     ID: string;
     Title: string;
     Thumbnail: Thumbnail;
-    RoomType: string
+    RoomTypeID: string
 }
 
 export class Thumbnail {
@@ -13,7 +13,7 @@ export class Thumbnail {
 export class GalleryItemDetails {
     ID: string;
     GalleryItemID: string;
-    Price: string;
+    Price: number;
     Content: string;
 }
 

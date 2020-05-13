@@ -22,7 +22,7 @@ export class RoomInfoComponent implements OnInit, OnChanges {
   }
 
   onBookNow() {
-    // this.router.navigate(['/booking', this.type]);
+    this.router.navigate(['/booking', this.roomDetails.RoomTypeID]);
   }
 
 }
