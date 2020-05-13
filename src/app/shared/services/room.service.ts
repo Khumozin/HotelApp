@@ -22,7 +22,7 @@ export class RoomService extends AppService {
 
   fetchRoomDetails(roomID: string): Observable<Room> {
     const room = this.galleryItemService.fetchGalleryItem(roomID);
-    const roomDetails = this.fetchRoomDetailsByRoomID(roomID);
+    const roomDetails = this.fetchRoomDetailsByGalleryItemID(roomID);
     const roomFeatures = this.fetchRoomFeaturesByRoomID(roomID);
     const roomImages = this.fetchRoomImagesByRoomID(roomID);
 
@@ -31,7 +31,7 @@ export class RoomService extends AppService {
         map(res => {
           return {
             Title: res[0].Title,
-            RoomTypeID: res[0].RoomType,
+            RoomTypeID: res[0].RoomTypeID,
             Price: res[1].Price,
             Description: res[1].Content,
             FeaturesList: [...res[2]],
@@ -41,7 +41,7 @@ export class RoomService extends AppService {
       );
   }
 
-  fetchRoomDetailsByRoomID(roomID: string): Observable<GalleryItemDetails> {
+  fetchRoomDetailsByGalleryItemID(roomID: string): Observable<GalleryItemDetails> {
     const url = `${this.endPoint}/galleryItemDetailsByGalleryItemID/${roomID}`;
     return this.httpClient.get<GalleryItemDetails>(url);
   }

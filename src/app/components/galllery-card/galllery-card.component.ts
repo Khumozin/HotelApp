@@ -12,16 +12,13 @@ import { GalleryItem } from '../../shared/models/gallery-item.model';
 export class GallleryCardComponent implements OnInit {
 
   @Input() galleryItem: GalleryItem;
-  @Output() onClick = new EventEmitter<any>();
-
   @Input() roomType: Rooms;
+  @Output() onClick = new EventEmitter<any>();
 
   constructor(private router: Router) {
   }
 
-  ngOnInit(): void {
-    console.log(this.galleryItem.Thumbnail.data);
-  }
+  ngOnInit(): void { }
 
   onCardClick(roomType) {
     this.onClick.emit(roomType);

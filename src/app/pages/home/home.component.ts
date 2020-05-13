@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { SharedService } from 'src/app/shared/services/shared.service';
 
 import { Rooms } from '../../shared/enums/rooms.enum';
 import { Amenity } from '../../shared/models/amenity.model';
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private sharedService: SharedService,
     private dataShare: DataShareService,
     private homeService: HomeService,
     private galleryItemsService: GalleryItemService) {
@@ -31,9 +33,11 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.sharedService.setIsBusy(true);
     this.initSlider();
     this.initScrollSpy();
     this.getGalleryItems();
+    this.sharedService.setIsBusy(false);
   }
 
   onGalleryCardClicked(type) {
