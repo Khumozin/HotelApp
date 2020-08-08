@@ -1,11 +1,5 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AfterViewInit, ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { Booking } from 'src/app/shared/models/booking.model';
-import { RoomType } from 'src/app/shared/models/room-type.model';
-import { BookingService } from 'src/app/shared/services/booking.service';
-import { SharedService } from 'src/app/shared/services/shared.service';
 
 declare const M: any;
 
@@ -17,26 +11,24 @@ declare const M: any;
 })
 export class BookingFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @Input() roomTypes: RoomType[];
+  // @Input() roomTypes: RoomType[];
 
-  bookingForm: FormGroup;
-  currentBooking: Booking;
-  selectedRoomID: string;
-  availableRooms: number[] = [];
-  onRoomTypeChangeSub: Subscription;
-  roomTypeSelect: HTMLElement;
+  // bookingForm: FormGroup;
+  // currentBooking: Booking;
+  // selectedRoomID: string;
+  // availableRooms: number[] = [];
+  // onRoomTypeChangeSub: Subscription;
+  // roomTypeSelect: HTMLElement;
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
-    private bookService: BookingService,
-    private sharedService: SharedService) {
-    this.selectedRoomID = this.route.snapshot.paramMap.get('id');
+    private route: ActivatedRoute) {
+    // this.selectedRoomID = this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit(): void {
-    this.getNumberOfRoomsForSelectedRoom(this.selectedRoomID);
-    this.generateBookingForm();
+    // this.getNumberOfRoomsForSelectedRoom(this.selectedRoomID);
+    // this.generateBookingForm();
   }
 
   ngAfterViewInit() {
@@ -45,9 +37,6 @@ export class BookingFormComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.onRoomTypeChangeSub) {
-      this.onRoomTypeChangeSub.unsubscribe();
-    }
   }
 
   initDatepicker() {
@@ -63,57 +52,57 @@ export class BookingFormComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   generateBookingForm() {
-    const date = new Date().toISOString().substring(0, 10);
-    this.bookingForm = new FormGroup({
-      'FirstName': new FormControl(null, Validators.required),
-      'Surname': new FormControl(null, Validators.required),
-      'ArrivalDate': new FormControl(date, Validators.required),
-      'DepartureDate': new FormControl(date, Validators.required),
-      'RoomTypeID': new FormControl(this.selectedRoomID, Validators.required),
-      'NumberOfRooms': new FormControl(0, Validators.required),
-      'Cellphone': new FormControl(null, Validators.required),
-      'Email': new FormControl(null, Validators.required)
-    });
+    // const date = new Date().toISOString().substring(0, 10);
+    // this.bookingForm = new FormGroup({
+    //   'FirstName': new FormControl(null, Validators.required),
+    //   'Surname': new FormControl(null, Validators.required),
+    //   'ArrivalDate': new FormControl(date, Validators.required),
+    //   'DepartureDate': new FormControl(date, Validators.required),
+    //   'RoomTypeID': new FormControl(this.selectedRoomID, Validators.required),
+    //   'NumberOfRooms': new FormControl(0, Validators.required),
+    //   'Cellphone': new FormControl(null, Validators.required),
+    //   'Email': new FormControl(null, Validators.required)
+    // });
 
-    this.onRoomTypeChangeSub = this.bookingForm.controls['RoomTypeID']
-      .valueChanges
-      .subscribe(value => {
-        this.getNumberOfRoomsForSelectedRoom(value);
+    // this.onRoomTypeChangeSub = this.bookingForm.controls['RoomTypeID']
+    //   .valueChanges
+    //   .subscribe(value => {
+    //     this.getNumberOfRoomsForSelectedRoom(value);
 
-        //#region  update No. of Rooms select
-        const noOfRoomsSelect = document.getElementById('noOfRoomsSelect');
-        noOfRoomsSelect.innerHTML = '';
+    //     //#region  update No. of Rooms select
+    //     const noOfRoomsSelect = document.getElementById('noOfRoomsSelect');
+    //     noOfRoomsSelect.innerHTML = '';
 
-        this.availableRooms.forEach(ii => {
-          noOfRoomsSelect.insertAdjacentHTML('beforeend', `<option value='${ii}'>${ii + 1}</option>`);
-        })
+    //     this.availableRooms.forEach(ii => {
+    //       noOfRoomsSelect.insertAdjacentHTML('beforeend', `<option value='${ii}'>${ii + 1}</option>`);
+    //     })
 
-        M.FormSelect.init(noOfRoomsSelect, {});
-        //#endregion
-      });
+    //     M.FormSelect.init(noOfRoomsSelect, {});
+    //     //#endregion
+    //   });
   }
 
   getNumberOfRoomsForSelectedRoom(id: string) {
-    const availableRooms = this.roomTypes.find(ii => ii.ID === id).AvailableRooms;
-    this.availableRooms = [...Array(availableRooms).keys()];
+    // const availableRooms = this.roomTypes.find(ii => ii.ID === id).AvailableRooms;
+    // this.availableRooms = [...Array(availableRooms).keys()];
   }
 
   onConfirm() {
-    this.sharedService.setIsBusy(true);
+    // this.sharedService.setIsBusy(true);
 
-    const booking: Booking = this.bookingForm.value;
-    booking.NumberOfRooms = booking.NumberOfRooms + 1;
-    booking.BookingNumber = null;
-    booking.IsConfirmed = false;
-    booking.IsPaid = false;
+    // const booking: Booking = this.bookingForm.value;
+    // booking.NumberOfRooms = booking.NumberOfRooms + 1;
+    // booking.BookingNumber = null;
+    // booking.IsConfirmed = false;
+    // booking.IsPaid = false;
 
-    this.bookService.addBooking(booking)
-      .subscribe(results => {
-        this.sharedService.setIsBusy(false);
-        this.router.navigate(['/confirmation', results.ID]);
-      }, err => {
-        console.error(err);
-      }, () => this.sharedService.setIsBusy(false));
+    // this.bookService.addBooking(booking)
+    //   .subscribe(results => {
+    //     this.sharedService.setIsBusy(false);
+    //     this.router.navigate(['/confirmation', results.ID]);
+    //   }, err => {
+    //     console.error(err);
+    //   }, () => this.sharedService.setIsBusy(false));
   }
 
 }

@@ -14,13 +14,10 @@ import { SystemReportsComponent } from 'src/app/pages/dashboard/system-reports/s
 import { UsersComponent } from 'src/app/pages/dashboard/users/users.component';
 import { PageNotFoundComponent } from 'src/app/pages/page-not-found/page-not-found.component';
 
-import { PaypalComponent } from '../../components/paypal/paypal.component';
-import { BookingComponent } from '../../pages/booking/booking.component';
 import { CartComponent } from '../../pages/cart/cart.component';
 import { ConfirmationComponent } from '../../pages/confirmation/confirmation.component';
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
 import { HomeComponent } from '../../pages/home/home.component';
-import { PaymentComponent } from '../../pages/payment/payment.component';
 import { RoomComponent } from '../../pages/room/room.component';
 
 
@@ -28,11 +25,9 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'room/:id', component: RoomComponent },
-  { path: 'booking/:id', component: BookingComponent },
-  { path: 'payment', component: PaymentComponent },
+  // { path: 'booking/:id', component: BookingComponent },
   { path: 'confirmation/:id', component: ConfirmationComponent },
   { path: 'cart', component: CartComponent },
-  { path: 'paypal', component: PaypalComponent },
   {
     path: 'dashboard', component: DashboardComponent, children: [
       { path: 'roomtypes', component: RoomTypesComponent },

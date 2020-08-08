@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
+import { HotelFeature } from '../../shared/models/hotel-feature.model';
+
 @Component({
   selector: 'app-icon-boxes',
   templateUrl: './icon-boxes.component.html',
@@ -7,7 +9,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class IconBoxesComponent implements OnInit {
 
-  @Input() amenities: any[];
+  @Input() hotelFeatures: HotelFeature[];
 
   constructor() { }
 

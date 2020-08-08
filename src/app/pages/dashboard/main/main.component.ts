@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Amenity } from 'src/app/shared/models/amenity.model';
+
+// import { Amenity } from 'src/app/shared/models/amenity.model';
 
 @Component({
   selector: 'app-main',
@@ -9,7 +10,7 @@ import { Amenity } from 'src/app/shared/models/amenity.model';
 })
 export class MainComponent implements OnInit {
 
-  MenuItems: Amenity[] = [
+  MenuItems: any[] = [
     {
       ID: undefined,
       Title: 'Amenities',

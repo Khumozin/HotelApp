@@ -1,4 +1,4 @@
-<!-- Section Gallery-->
+<!-- Section Gallery -->
 <section id="rooms"
          class="section section-gallery scrollspy">
     <div class="container">
@@ -10,14 +10,14 @@
         <div class="row">
             <ng-container *ngFor="let item of galleryItemsFirstRow">
                 <app-galllery-card [galleryItem]="item"
-                                   (onClick)="onGalleryCardClicked(item.ID)"></app-galllery-card>
+                                   (onClick)="onGalleryCardClicked(item.id)"></app-galllery-card>
             </ng-container>
         </div>
 
         <div class="row">
             <ng-container *ngFor="let item of galleryItemsSecondRow">
                 <app-galllery-card [galleryItem]="item"
-                                   (onClick)="onGalleryCardClicked(item.ID)"></app-galllery-card>
+                                   (onClick)="onGalleryCardClicked(item.id)"></app-galllery-card>
             </ng-container>
         </div>
 

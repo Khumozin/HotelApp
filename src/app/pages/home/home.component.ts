@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { SharedService } from 'src/app/shared/services/shared.service';
-
-import { Rooms } from '../../shared/enums/rooms.enum';
-import { Amenity } from '../../shared/models/amenity.model';
-import { GalleryItem } from '../../shared/models/gallery-item.model';
-import { DataShareService } from '../../shared/services/data-share.service';
-import { GalleryItemService } from '../../shared/services/gallery-item.service';
-import { HomeService } from '../../shared/services/home.service';
+import { AppService } from 'src/app/app.service';
+import { HotelFeature } from 'src/app/shared/models/hotel-feature.model';
+import { Room } from 'src/app/shared/models/room.model';
+import { SystemConfig } from 'src/app/shared/models/system-config.model';
+import { HotelFeatureService } from 'src/app/shared/services/hotel-feature.service';
 
 declare const M: any;
 
@@ -19,30 +15,20 @@ declare const M: any;
 })
 export class HomeComponent implements OnInit {
 
-  amenities: Amenity[];
-  galleryItems$: Observable<GalleryItem[]>;
+  systemConfig: SystemConfig;
+  hotelFeatures: HotelFeature[];
+  rooms$: Observable<Room[]>;
 
   constructor(
-    private router: Router,
-    private sharedService: SharedService,
-    private dataShare: DataShareService,
-    private homeService: HomeService,
-    private galleryItemsService: GalleryItemService) {
-    this.handleDataShare();
-    this.getAmenities();
+    private appService: AppService,
+    private hotelFeatureService: HotelFeatureService) {
   }
 
   ngOnInit(): void {
-    this.sharedService.setIsBusy(true);
     this.initSlider();
     this.initScrollSpy();
-    this.getGalleryItems();
-    this.sharedService.setIsBusy(false);
-  }
-
-  onGalleryCardClicked(type) {
-    this.dataShare.setRoomType(type);
-    this.router.navigate(['/room']);
+    this.getSystemConfig();
+    this.getHotelFeatures();
   }
 
   initSlider() {
@@ -62,17 +48,14 @@ export class HomeComponent implements OnInit {
     M.ScrollSpy.init(ss, {});
   }
 
-  handleDataShare() {
-    this.dataShare.setRoomType(Rooms.Executive);
+  getSystemConfig() {
+    this.appService.fetchSystemConfig()
+      .subscribe((config: SystemConfig) => this.systemConfig = config);
+
   }
 
-  getAmenities() {
-    this.homeService.fetchAmenities().subscribe((items: Amenity[]) => {
-      this.amenities = [...items];
-    })
-  }
-
-  getGalleryItems() {
-    this.galleryItems$ = this.galleryItemsService.fetchGalleryItems();
+  getHotelFeatures() {
+    this.hotelFeatureService.fetchHotelFeatures()
+      .subscribe((features: HotelFeature[]) => this.hotelFeatures = [...features]);
   }
 }

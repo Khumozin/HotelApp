@@ -3,17 +3,17 @@
     <div class="row"
          style="margin-top: 5%;">
         <div class="col s12 m12 l6">
-            <ng-container *ngIf="selectedRoom?.Images">
-                <app-room-carousel [images]="selectedRoom.Images"></app-room-carousel>
+            <ng-container *ngIf="images">
+                <app-room-carousel [images]="images"></app-room-carousel>
             </ng-container>
         </div>
         <div class="col s12 m12 l6">
-            <app-room-info [room]="selectedRoom"></app-room-info>
+            <app-room-info [room]="room"></app-room-info>
         </div>
     </div>
     <div class="row">
         <div class="col s12 m12 l12">
-            <app-feature-list [featureList]="selectedRoom?.FeaturesList ? selectedRoom?.FeaturesList : []">
+            <app-feature-list [featureList]="features ? features : []">
             </app-feature-list>
         </div>
     </div>

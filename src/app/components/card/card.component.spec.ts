@@ -8,9 +8,9 @@ describe('CardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CardComponent ]
+      declarations: [CardComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -21,5 +21,13 @@ describe('CardComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should convert iso string to normal date', () => {
+    const item = {
+      value: [{ DateTime: '1' }]
+    };
+    let result = component.parseDateTime(item.value[0].DateTime);
+    expect(result).toEqual(1);
   });
 });

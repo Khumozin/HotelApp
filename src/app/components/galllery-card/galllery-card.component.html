@@ -1,11 +1,11 @@
 <div class="wow animated pulse col s12 m4">
     <div class="card hoverable"
-         (click)="onCardClick(roomType)">
+         (click)="onCardClick(galleryItem.id)">
         <div class="card-image">
-            <img src="{{galleryItem.Thumbnail}}" />
+            <img src="data:image/jpeg;base64,{{galleryItem.thumbnail}}" />
         </div>
         <div class="card-content">
-            {{ galleryItem.Title }}
+            {{ galleryItem.title }}
         </div>
     </div>
 </div>

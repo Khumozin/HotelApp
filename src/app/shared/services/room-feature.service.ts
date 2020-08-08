@@ -3,19 +3,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
-import { SystemConfig } from './shared/models/system-config.model';
+import { RoomFeature } from '../models/room-feature.model';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AppService {
+export class RoomFeatureService {
 
   private endPoint: string = environment.api;
-  private systemConfig: string = environment.systemConfig;
 
   constructor(private http: HttpClient) { }
 
-  fetchSystemConfig(): Observable<SystemConfig> {
-    return this.http.get<SystemConfig>(`${this.endPoint}/SystemConfigs/` + this.systemConfig);
+  fetchRoomFeatures(roomId): Observable<RoomFeature[]> {
+    return this.http.get<RoomFeature[]>(`${this.endPoint}/RoomFeatures/GetByRoomID/` + roomId);
   }
 }
