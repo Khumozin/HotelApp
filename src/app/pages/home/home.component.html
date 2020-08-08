@@ -1,13 +1,13 @@
-<app-slider></app-slider>
+<app-slider [config]="systemConfig"></app-slider>
 
-<app-welcome></app-welcome>
+<app-welcome [config]="systemConfig"></app-welcome>
 
-<app-icon-boxes [amenities]="amenities"></app-icon-boxes>
+<app-icon-boxes [hotelFeatures]="hotelFeatures"></app-icon-boxes>
 
-<app-gallery [galleryItems]="galleryItems$ | async"></app-gallery>
+<app-gallery></app-gallery>
 
 <app-contact></app-contact>
 
 <app-follow></app-follow>
 
-<app-footer></app-footer>
+<app-footer [appName]="systemConfig?.appName ? systemConfig.appName : ''"></app-footer>

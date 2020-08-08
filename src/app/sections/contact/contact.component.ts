@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { noop } from 'rxjs';
-import { Message } from 'src/app/shared/models/message.model';
-import { ContactService } from 'src/app/shared/services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +9,7 @@ import { ContactService } from 'src/app/shared/services/contact.service';
 export class ContactComponent implements OnInit {
   contactForm: FormGroup;
 
-  constructor(private contactService: ContactService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.generateContactForm();
@@ -28,22 +25,22 @@ export class ContactComponent implements OnInit {
   }
 
   onSendMessage() {
-    if (this.contactForm.valid) {
-      const formData: Message = {
-        ID: null,
-        Name: this.contactForm.value.Name,
-        Email: this.contactForm.value.Email,
-        Subject: this.contactForm.value.Subject,
-        Message: this.contactForm.value.Message,
-        IsRead: false
-      };
+    //   if (this.contactForm.valid) {
+    //     const formData: Message = {
+    //       ID: null,
+    //       Name: this.contactForm.value.Name,
+    //       Email: this.contactForm.value.Email,
+    //       Subject: this.contactForm.value.Subject,
+    //       Message: this.contactForm.value.Message,
+    //       IsRead: false
+    //     };
 
-      this.contactForm.reset();
-      this.contactService.submitMessage(formData)
-        .subscribe(noop, err => {
-          console.error(err);
-        });
-    }
+    //     this.contactForm.reset();
+    //     this.contactService.submitMessage(formData)
+    //       .subscribe(noop, err => {
+    //         console.error(err);
+    //       });
+    //   }
   }
 
 }

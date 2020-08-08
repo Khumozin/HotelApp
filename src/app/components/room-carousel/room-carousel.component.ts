@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { GalleryItemImage } from 'src/app/shared/models/gallery-item.model';
+import { AfterViewInit, Component, Input, OnChanges, OnInit } from '@angular/core';
+import { RoomImage } from 'src/app/shared/models/room-image.model';
 
 declare const M: any;
 
@@ -8,9 +8,10 @@ declare const M: any;
   templateUrl: './room-carousel.component.html',
   styleUrls: ['./room-carousel.component.scss']
 })
-export class RoomCarouselComponent implements OnInit, AfterViewInit {
+export class RoomCarouselComponent implements OnInit, AfterViewInit, OnChanges {
 
-  @Input() images: GalleryItemImage[];
+  @Input() images: RoomImage[];
+  byteImages: string[];
 
   constructor() { }
 
@@ -18,8 +19,20 @@ export class RoomCarouselComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // this.initCarousel();
+    this.initCarousel();
     this.initSlider();
+  }
+
+  ngOnChanges() {
+    if (this.images) {
+
+      this.byteImages = [];
+
+      this.images.forEach((img: RoomImage) => {
+        const image = 'data:image/jpeg;base64,' + img.image;
+        this.byteImages.push(image);
+      });
+    }
   }
 
   initCarousel() {

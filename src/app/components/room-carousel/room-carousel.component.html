@@ -6,12 +6,14 @@
     </ng-container>
 </div> -->
 
-<div class="slider">
-    <ul class="slides">
-        <ng-container *ngFor="let item of images">
-            <li class="z-depth-3">
-                <img src="{{item.Image}}">
-            </li>
-        </ng-container>
-    </ul>
-</div>
+<ng-container *ngIf="byteImages">
+    <div class="slider">
+        <ul class="slides">
+            <ng-container *ngFor="let img of byteImages">
+                <li class="z-depth-3">
+                    <img src="{{img}}">
+                </li>
+            </ng-container>
+        </ul>
+    </div>
+</ng-container>

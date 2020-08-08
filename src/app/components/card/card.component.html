@@ -1,8 +1,8 @@
-<ng-container *ngIf="amenity">
+<ng-container *ngIf="item">
     <div class="card-panel"
-         [ngClass]="{hoverable: !amenity.Content, center: !amenity.Content}">
-        <img src="{{ amenity.Icon }}" />
-        <h5>{{ amenity.Title }}</h5>
-        <p *ngIf="amenity.Content"> {{ amenity.Content }} </p>
+         [ngClass]="{hoverable: !item.content, center: !item.content}">
+        <img src="{{ item.image }}" />
+        <h5>{{ item.title }}</h5>
+        <p *ngIf="item.content"> {{ item.content }} </p>
     </div>
 </ng-container>

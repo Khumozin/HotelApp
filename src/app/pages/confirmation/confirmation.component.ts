@@ -1,13 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { noop, Subscription } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 import SignaturePad from 'signature_pad';
-import { Booking } from 'src/app/shared/models/booking.model';
-import { BookingService } from 'src/app/shared/services/booking.service';
-import { GalleryItemService } from 'src/app/shared/services/gallery-item.service';
-import { RoomService } from 'src/app/shared/services/room.service';
-import { SharedService } from 'src/app/shared/services/shared.service';
 
 // import { room } from 'src/app/shared/consts/data';
 declare const M: any;
@@ -20,7 +14,7 @@ declare const M: any;
 export class ConfirmationComponent implements OnInit, AfterViewInit, OnDestroy {
 
   signaturePad: any;
-  booking: Booking;
+  // booking: Booking;
   currentBookingID: string;
   roomType: string = '';
   totalPrice: number = 0;
@@ -29,17 +23,11 @@ export class ConfirmationComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('sPad', { read: ElementRef }) signaturePadElement: ElementRef;
 
   constructor(private router: Router,
-    private route: ActivatedRoute,
-    private sharedService: SharedService,
-    private bookingService: BookingService,
-    private galleryItemSerive: GalleryItemService,
-    private roomService: RoomService) {
+    private route: ActivatedRoute) {
     this.currentBookingID = this.route.snapshot.paramMap.get('id');
   }
 
   ngOnInit(): void {
-    this.setIsBusy(true);
-    this.getBooking();
   }
 
   ngAfterViewInit() {
@@ -47,9 +35,6 @@ export class ConfirmationComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if (this.bookingSub) {
-      this.bookingSub.unsubscribe();
-    }
   }
 
   onClear() {
@@ -120,31 +105,27 @@ export class ConfirmationComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
 
-  getBooking() {
-    this.bookingSub = this.bookingService.fetchBookingByID(this.currentBookingID)
-      .pipe(
-        map(booking => {
-          this.booking = booking;
-          return booking;
-        }),
-        switchMap(ii => this.galleryItemSerive.fetchGalleryItemByRoomTypeID(ii.RoomTypeID)),
-        map(res => {
-          this.roomType = res.Title;
-          return { ID: res.ID };
-        }),
-        switchMap(x => this.roomService.fetchRoomDetailsByGalleryItemID(x.ID)),
-        map(results => {
-          this.totalPrice = (results.Price * this.booking.NumberOfRooms);
-        })
-      )
-      .subscribe(
-        noop,
-        err => console.error(err),
-        () => { this.setIsBusy(false); });
-  }
-
-  setIsBusy(state: boolean) {
-    this.sharedService.setIsBusy(state);
-  }
+  // getBooking() {
+  //   this.bookingSub = this.bookingService.fetchBookingByID(this.currentBookingID)
+  //     .pipe(
+  //       map(booking => {
+  //         this.booking = booking;
+  //         return booking;
+  //       }),
+  //       switchMap(ii => this.galleryItemSerive.fetchGalleryItemByRoomTypeID(ii.RoomTypeID)),
+  //       map(res => {
+  //         this.roomType = res.Title;
+  //         return { ID: res.ID };
+  //       }),
+  //       switchMap(x => this.roomService.fetchRoomDetailsByGalleryItemID(x.ID)),
+  //       map(results => {
+  //         this.totalPrice = (results.Price * this.booking.NumberOfRooms);
+  //       })
+  //     )
+  //     .subscribe(
+  //       noop,
+  //       err => console.error(err),
+  //       () => { this.setIsBusy(false); });
+  // }
 
 }

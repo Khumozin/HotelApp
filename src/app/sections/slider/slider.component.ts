@@ -1,36 +1,34 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
-import { RoomType } from 'src/app/shared/models/room-type.model';
-import { RoomTypeService } from 'src/app/shared/services/room-type.service';
+import { SystemConfig } from 'src/app/shared/models/system-config.model';
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnInit, OnDestroy {
+export class SliderComponent implements OnInit, OnDestroy, OnChanges {
 
-  roomTypes: RoomType[];
-  roomTypesSub: Subscription;
+  @Input() config: SystemConfig;
+  image: string;
 
   constructor(
-    private router: Router,
-    private roomTypeService: RoomTypeService) { }
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.roomTypesSub = this.roomTypeService.fetchRoomTypes()
-      .subscribe(ii => (this.roomTypes = ii));
   }
 
   ngOnDestroy() {
-    if (this.roomTypesSub) {
-      this.roomTypesSub.unsubscribe();
+  }
+
+  ngOnChanges() {
+    if (this.config) {
+      this.image = 'data:image/jpeg;base64,' + this.config.heroImage;
     }
   }
 
   onBook() {
-    this.router.navigate(['/booking', this.roomTypes[0].ID]);
+    this.router.navigate(['/booking']);
   }
 
 }

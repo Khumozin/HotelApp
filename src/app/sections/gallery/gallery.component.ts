@@ -1,7 +1,8 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Room } from 'src/app/shared/models/room.model';
+import { RoomService } from 'src/app/shared/services/room.service';
 
-import { GalleryItem } from '../../shared/models/gallery-item.model';
 
 @Component({
   selector: 'app-gallery',
@@ -10,49 +11,30 @@ import { GalleryItem } from '../../shared/models/gallery-item.model';
 })
 export class GalleryComponent implements OnInit, OnChanges {
 
-  @Input() galleryItems: GalleryItem[];
-  items: GalleryItem[];
+  rooms: Room[];
 
   galleryItemsFirstRow: any[];
-
   galleryItemsSecondRow: any[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private roomService: RoomService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getRooms();
+  }
 
   ngOnChanges() {
-    this.items = this.galleryItems;
-    if (this.galleryItems) {
-      this.galleryItemsFirstRow = this.galleryItems.slice(0, 3);
-      this.galleryItemsSecondRow = this.galleryItems.slice(3)
-    }
-  }
-
-  uploadImg(files) {
-    let reader = new FileReader();
-    reader.readAsDataURL(files);
-    reader.onload = () => {
-      const res = this.base64ToBlob(reader.result);
-      console.log(res);
-    }
-
-  }
-
-  base64ToBlob(dataURI) {
-    var byteString = atob(dataURI.split(',')[1]);
-    var ab = new ArrayBuffer(byteString.length);
-    var ia = new Uint8Array(ab);
-
-    for (var i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ab], { type: 'image/jpeg' });
   }
 
   onGalleryCardClicked(roomID) {
-    console.log(roomID);
     this.router.navigate(['/room', roomID]);
+  }
+
+  getRooms() {
+    this.roomService.fetchRooms().subscribe(rooms => {
+      this.rooms = [...rooms];
+      this.galleryItemsFirstRow = this.rooms.slice(0, 3);
+      this.galleryItemsSecondRow = this.rooms.slice(3);
+    });
   }
 
 }

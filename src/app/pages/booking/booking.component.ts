@@ -1,8 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RoomType } from 'src/app/shared/models/room-type.model';
-import { RoomTypeService } from 'src/app/shared/services/room-type.service';
-
-import { Rooms } from '../../shared/enums/rooms.enum';
 
 declare const M: any;
 
@@ -13,12 +9,12 @@ declare const M: any;
 })
 export class BookingComponent implements OnInit {
 
-  roomType: Rooms;
-  RoomTypes = Rooms;
-  roomNummbers = [...Array(10).keys()];
-  roomTypesDataSource: RoomType[];
+  // roomType: Rooms;
+  // RoomTypes = Rooms;
+  // roomNummbers = [...Array(10).keys()];
+  // roomTypesDataSource: RoomType[];
 
-  constructor(private roomTypeService: RoomTypeService) {
+  constructor() {
   }
 
   ngOnInit(): void {
@@ -26,9 +22,9 @@ export class BookingComponent implements OnInit {
   }
 
   getRoomTypes() {
-    this.roomTypeService.fetchRoomTypes().subscribe(items => {
-      this.roomTypesDataSource = items;
-    });
+    // this.roomTypeService.fetchRoomTypes().subscribe(items => {
+    //   this.roomTypesDataSource = items;
+    // });
   }
 
 }

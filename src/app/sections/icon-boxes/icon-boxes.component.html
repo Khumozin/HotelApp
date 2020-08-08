@@ -4,9 +4,9 @@
         <div class="row">
             <h4 class="center">
                 <span class="grey-text">Amenities</span></h4>
-            <ng-container *ngFor="let item of amenities">
+            <ng-container *ngFor="let feature of hotelFeatures">
                 <div class="col s12 m12 l4">
-                    <app-card [amenity]="item"></app-card>
+                    <app-card [item]="feature"></app-card>
                 </div>
             </ng-container>
         </div>

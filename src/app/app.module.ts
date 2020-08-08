@@ -10,6 +10,7 @@ import { CardComponent } from './components/card/card.component';
 import { DataTableComponent } from './components/data-table/data-table.component';
 import { FeatureListComponent } from './components/feature-list/feature-list.component';
 import { GallleryCardComponent } from './components/galllery-card/galllery-card.component';
+import { LoaderComponent } from './components/loader/loader.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -35,7 +36,6 @@ import { SystemReportsComponent } from './pages/dashboard/system-reports/system-
 import { UsersComponent } from './pages/dashboard/users/users.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { PaymentComponent } from './pages/payment/payment.component';
 import { RoomComponent } from './pages/room/room.component';
 import { ContactComponent } from './sections/contact/contact.component';
 import { FollowComponent } from './sections/follow/follow.component';
@@ -46,7 +46,6 @@ import { SliderComponent } from './sections/slider/slider.component';
 import { WelcomeComponent } from './sections/welcome/welcome.component';
 import { EnumToArrayPipe } from './shared/pipes/enum-to-array.pipe';
 import { AppRoutingModule } from './shared/routing/app-routing.module';
-import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +59,6 @@ import { LoaderComponent } from './components/loader/loader.component';
     RoomInfoComponent,
     FeatureListComponent,
     BookingComponent,
-    PaymentComponent,
     EnumToArrayPipe,
     ConfirmationComponent,
     PaypalComponent,

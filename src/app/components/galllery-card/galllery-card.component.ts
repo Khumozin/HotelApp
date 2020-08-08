@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-
-import { Rooms } from '../../shared/enums/rooms.enum';
-import { GalleryItem } from '../../shared/models/gallery-item.model';
+import { Room } from 'src/app/shared/models/room.model';
 
 @Component({
   selector: 'app-galllery-card',
@@ -11,8 +9,8 @@ import { GalleryItem } from '../../shared/models/gallery-item.model';
 })
 export class GallleryCardComponent implements OnInit {
 
-  @Input() galleryItem: GalleryItem;
-  @Input() roomType: Rooms;
+  @Input() galleryItem: Room;
+  // @Input() roomType: Rooms;
   @Output() onClick = new EventEmitter<any>();
 
   constructor(private router: Router) {
@@ -20,8 +18,8 @@ export class GallleryCardComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  onCardClick(roomType) {
-    this.onClick.emit(roomType);
+  onCardClick(id: string) {
+    this.onClick.emit(id);
   }
 
 }

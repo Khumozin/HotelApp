@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SystemConfig } from 'src/app/shared/models/system-config.model';
 
 @Component({
   selector: 'app-welcome',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./welcome.component.scss']
 })
 export class WelcomeComponent implements OnInit {
+
+  @Input() config: SystemConfig;
 
   constructor() { }
 

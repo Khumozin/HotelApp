@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Amenity } from 'src/app/shared/models/amenity.model';
+
+import { HotelFeature } from '../../shared/models/hotel-feature.model';
 
 @Component({
   selector: 'app-card',
@@ -8,11 +9,10 @@ import { Amenity } from 'src/app/shared/models/amenity.model';
 })
 export class CardComponent implements OnInit {
 
-  @Input() amenity: Amenity;
+  @Input() item: HotelFeature;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }
