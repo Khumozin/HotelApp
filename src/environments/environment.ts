@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   api: 'http://localhost:5000/api',
-  smtp: 'http://localhost:3000/api/emails',
+  smtp: 'https://email-service-api.herokuapp.com/api/emails',
   systemConfig: '6E4E2C30-A5BB-4999-B7E0-5CD2C03031EC'
 };
 
