@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { map, switchMap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { EmailForSave } from 'src/app/shared/models/email-for-save.model';
 import { Email, EmailType } from 'src/app/shared/models/email.model';
 import { EmailService } from 'src/app/shared/services/email.service';
@@ -27,10 +27,10 @@ export class ContactComponent implements OnInit {
 
   generateContactForm() {
     this.contactForm = new FormGroup({
-      'Name': new FormControl(null, Validators.required),
-      'Email': new FormControl(null, Validators.required),
-      'Subject': new FormControl(null, Validators.required),
-      'Message': new FormControl(null, Validators.required)
+      'Name': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+      'Email': new FormControl(null, [Validators.required, Validators.email]),
+      'Subject': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')]),
+      'Message': new FormControl(null, [Validators.required, Validators.pattern('[a-zA-Z ]*')])
     });
   }
 
@@ -62,8 +62,8 @@ export class ContactComponent implements OnInit {
       this.emailService.addEmail(emailForSave)
         .pipe(
           map(savedEMail => savedEMail),
-          switchMap(e => this.smtpService.sendEmail(email)),
-          map(s => s)
+          // switchMap(e => this.smtpService.sendEmail(email)),
+          // map(s => s)
         ).subscribe(res => {
           if (res) {
             M.toast({ html: `${res['Response']}`, classes: 'rounded' });

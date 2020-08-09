@@ -56,6 +56,8 @@ export class HomeComponent implements OnInit {
 
   getHotelFeatures() {
     this.hotelFeatureService.fetchHotelFeatures()
-      .subscribe((features: HotelFeature[]) => this.hotelFeatures = [...features]);
+      .subscribe((features: HotelFeature[]) => {
+        this.hotelFeatures = [...features.sort((a, b) => a.content.length - b.content.length)];
+      });
   }
 }
