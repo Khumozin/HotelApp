@@ -6,7 +6,7 @@
 
 <app-gallery></app-gallery>
 
-<app-contact></app-contact>
+<app-contact [appName]="systemConfig?.appName ? systemConfig.appName : ''"></app-contact>
 
 <app-follow></app-follow>
 
